@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Two storage clusters with identical expected data loss can differ 600x in how often they lose anything. An interactive explainer built on the Copysets idea.">
 <title>The 1% Outage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -157,6 +163,8 @@ button.choice{padding:12px 16px;font-size:15px}
 }
 @media (prefers-reduced-motion: reduce){ .anim{transition:none !important} }
 </style>
+</head>
+<body>
 
 <header class="hero">
   <div class="wrap">
@@ -529,3 +537,5 @@ document.getElementById('s2e').textContent=E_LOSS.toFixed(1);
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{g1.draw();g2.draw();T1.draw();T2.draw();});
 })();
 </script>
+</body>
+</html>
