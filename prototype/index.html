@@ -300,7 +300,7 @@ button.choice{padding:12px 16px;font-size:15px}
     <div class="verdict" id="verdict" hidden>
       <div class="callout" id="verdict-text"></div>
       <div class="callout copy"><strong>The paper's argument.</strong> When a data-loss incident carries a substantial fixed cost that does not scale with bytes lost (a page, an investigation, customer notices, a restore from backup), fewer and larger incidents are preferable to frequent small ones, because the fixed cost is paid per incident. Under that cost model the number to minimise is the probability of an incident, and copysets cut it by roughly <span class="num">600×</span> with no change in storage or replication.</div>
-      <div class="callout lost"><strong>Where it flips.</strong> If your cost is proportional to bytes lost, with no fixed cost per incident, the two clusters are equivalent and the argument evaporates. Expected loss is not the wrong metric. It's the wrong metric on its own. Reliability is a distribution, and you need to know which shape your cost function punishes.</div>
+      <div class="callout lost"><strong>Where it flips.</strong> If your cost is proportional to bytes lost, with no fixed cost per incident, the two clusters are equivalent and the argument evaporates. Expected chunks lost per outage is not the wrong number. It's the wrong number on its own. Reliability is a distribution, and you need to know which shape your cost function punishes.</div>
     </div>
   </div>
 </section>
