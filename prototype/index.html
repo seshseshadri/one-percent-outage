@@ -94,6 +94,7 @@ button.choice{padding:12px 16px;font-size:15px}
 .legend i.copy{background:var(--copy)}
 .legend i.ring{background:transparent;border:2px solid var(--lost)}
 .hint{font-size:12px;color:var(--ink-3)}
+.aside{display:block;margin-top:6px;font-size:14px;font-style:italic;color:var(--ink-3)}
 
 .explain{margin-top:8px}
 .explain summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--ink-2);list-style:none;display:inline-flex;align-items:center;gap:6px}
@@ -203,7 +204,7 @@ button.choice{padding:12px 16px;font-size:15px}
     <div class="legend"><span><i></i>node</span><span><i class="dead"></i>failed node</span><span><i class="lost"></i>failed node holding a replica of a lost chunk</span></div>
     <canvas id="c1" width="900" height="560" aria-label="Grid of 5,001 storage nodes"></canvas>
     <div class="foot">
-      <div class="stat"><div class="l">Chunks lost this outage</div><div class="v lost num" id="s1lost">–</div><div class="sub" id="s1lostsub">of 10,000,000</div></div>
+      <div class="stat"><div class="l">Chunks lost this outage</div><div class="v lost num" id="s1lost">–</div><div class="sub" id="s1lostsub">&nbsp;</div></div>
       <div class="stat"><div class="l">Chance of any data loss</div><div class="v num" id="s1p">–</div><div class="sub">per outage, exact</div></div>
       <div class="stat"><div class="l">Your guess</div><div class="v num" id="s1guess">–</div><div class="sub">&nbsp;</div></div>
     </div>
@@ -225,7 +226,7 @@ button.choice{padding:12px 16px;font-size:15px}
   <div class="beat-head">
     <span class="k">2 · Copyset placement</span>
     <h2>Change only the replica placement.</h2>
-    <p>Copyset placement, in its simplest form: split the 5,001 nodes into 1,667 fixed groups of three, and put each chunk's three replicas on one group. Same three replicas, same storage, same nodes. Production copyset designs overlap the groups for faster recovery; see the notes at the end.</p>
+    <p>Copyset placement, in its simplest form: split the 5,001 nodes into 1,667 fixed groups of three, and put each chunk's three replicas on one group. Same three replicas, same storage, same nodes. <span class="aside">Production copyset designs overlap the groups for faster recovery; see the notes at the end.</span></p>
   </div>
   <div class="lab">
     <div class="bar">
@@ -450,7 +451,7 @@ function runBeat1(){
     document.getElementById('s1lost').textContent=fmtInt(o.lost);
     document.getElementById('s1p').textContent=fmtPct(P_RANDOM);
     document.getElementById('s1guess').textContent=guess.value+'%';
-    document.getElementById('s1lostsub').textContent=o.lost>0?`of 10,000,000, replicas on the ${o.marked.size} red nodes`:'of 10,000,000';
+    document.getElementById('s1lostsub').textContent=o.lost>0?`their replicas were on the ${o.marked.size} red nodes`:'no chunk had all three nodes fail';
     document.getElementById('r1').hidden=false; btn.disabled=false; btn.textContent='Fail 1% again';
   }, k=>{ document.getElementById('s1lost').textContent=fmtInt(k); });
 }
@@ -477,7 +478,7 @@ document.getElementById('fail2').addEventListener('click',()=>{
   document.getElementById('s2lost').textContent='0';
   g2.showOutage(o,()=>{
     document.getElementById('s2lost').textContent=fmtInt(o.lost);
-    document.getElementById('s2lostsub').textContent=mode2==='copy'?(o.groups.length?`${o.groups.length} whole group${o.groups.length>1?'s':''} lost`:'no group had all three nodes fail'):(o.lost>0?`replicas on the ${o.marked.size} red nodes`:'no chunk had all three nodes fail');
+    document.getElementById('s2lostsub').textContent=mode2==='copy'?(o.groups.length?`${o.groups.length} whole group${o.groups.length>1?'s':''} lost`:'no group had all three nodes fail'):(o.lost>0?`their replicas were on the ${o.marked.size} red nodes`:'no chunk had all three nodes fail');
     document.getElementById('s2p').textContent=fmtPct(mode2==='copy'?P_COPY:P_RANDOM);
     document.getElementById('s2p').className='v num '+(mode2==='copy'?'copy':'random');
     if(mode2==='copy'){ document.getElementById('s2guess').textContent=guess2.value+'%'; document.getElementById('r2').hidden=false; }
