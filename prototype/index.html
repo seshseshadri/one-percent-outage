@@ -53,6 +53,7 @@ header.hero .dek{font-size:20px;color:var(--ink-2);margin-top:18px;max-width:60c
 header.hero .setup{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px}
 header.hero .setup div{display:flex;flex-direction:column;gap:2px}
 header.hero .setup .v{font-family:var(--f-mono);font-size:15px}
+header.hero .setup .dim{color:var(--ink-3)}
 section.beat{padding:44px 0 8px}
 section.beat + section.beat{border-top:1px solid var(--line)}
 .beat-head{display:grid;grid-template-columns:auto 1fr;gap:16px 20px;align-items:baseline;margin-bottom:18px}
@@ -91,16 +92,13 @@ button.choice{padding:12px 16px;font-size:15px}
 .legend i.dead{background:var(--dead)}
 .legend i.lost{background:var(--lost)}
 .legend i.copy{background:var(--copy)}
-.legend i.tri{width:0;height:0;border-radius:0;background:transparent;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid var(--lost)}
 .legend i.ring{background:transparent;border:2px solid var(--lost)}
 .hint{font-size:12px;color:var(--ink-3)}
-.eq{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px 10px}
-.eq .term{flex:1 1 150px;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:4px}
-.eq .term .v{font-family:var(--f-mono);font-size:24px;font-variant-numeric:tabular-nums;line-height:1.1}
-.eq .term .l{font-size:12px;color:var(--ink-2);margin-top:6px;line-height:1.35}
-.eq .term.lost{border-color:var(--lost)} .eq .term.lost .v{color:var(--lost)}
-.eq .op{align-self:center;font-family:var(--f-display);font-size:22px;color:var(--ink-3)}
-.note{color:var(--ink-2);max-width:66ch}
+.next{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.cont{font-family:var(--f-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);border-bottom:2px solid var(--line-strong)}
+.cont:hover{border-bottom-color:var(--ink)}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
 .explain{margin-top:8px}
 .explain summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--random);list-style:none;display:inline-flex;align-items:center;gap:6px}
 .explain summary::-webkit-details-marker{display:none}
@@ -144,12 +142,23 @@ button.choice{padding:12px 16px;font-size:15px}
 .sandbox label .row b{font-family:var(--f-mono);font-weight:500;color:var(--ink)}
 .sandbox input[type=range]{width:100%;accent-color:var(--ink)}
 .sandbox .out{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
-.sandbox .out .cell{padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+.sandbox .out .cell{padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:var(--surface-2)}
 .sandbox .out .cell .l{font-size:12px;color:var(--ink-3)}
 .sandbox .out .cell .v{font-family:var(--f-mono);font-size:20px;margin-top:2px}
 .sandbox .out .cell .v.random{color:var(--random)}
 .sandbox .out .cell .v.copy{color:var(--copy)}
 .sandbox .out .cell .sub{font-size:12px;color:var(--ink-3)}
+.optional{padding:20px 0 12px}
+.optional details{border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.optional summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:14px;padding:14px 18px}
+.optional summary::-webkit-details-marker{display:none}
+.optional summary .k{font-family:var(--f-display);font-size:13px;font-weight:700;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
+.optional summary .t{font-family:var(--f-display);font-size:18px;font-weight:600}
+.optional summary::after{content:"+";margin-left:auto;font-family:var(--f-mono);color:var(--ink-3);font-size:18px}
+.optional details[open] summary::after{content:"–"}
+.optional details[open] summary{border-bottom:1px solid var(--line)}
+.optional .lead{color:var(--ink-2);padding:14px 18px 0;max-width:66ch}
+.optional .sandbox{padding:14px 18px 18px}
 .caveats{padding:40px 0 60px;border-top:1px solid var(--line);margin-top:32px}
 .caveats ul{margin:14px 0 0;padding-left:20px;max-width:70ch;color:var(--ink-2)}
 .caveats li{margin:6px 0}
@@ -172,7 +181,7 @@ button.choice{padding:12px 16px;font-size:15px}
     <h1>The 1% Outage</h1>
     <p class="dek">Three replicas of everything. One percent of the machines die at once. How often do you lose data? The answer depends on something replication factor doesn't measure.</p>
     <div class="setup">
-      <div><span class="eyebrow">Cluster</span><span class="v">5,001 nodes</span></div>
+      <div><span class="eyebrow">Cluster</span><span class="v">5,001 nodes <span class="dim">(1,667 × 3)</span></span></div>
       <div><span class="eyebrow">Data</span><span class="v">10,000,000 chunks · 64 MB each · 640 TB</span></div>
       <div><span class="eyebrow">Replication</span><span class="v">3 copies, 3 different nodes</span></div>
       <div><span class="eyebrow">Failure</span><span class="v">50 random nodes (1%) at once</span></div>
@@ -208,11 +217,11 @@ button.choice{padding:12px 16px;font-size:15px}
       <details class="explain"><summary>Explain the 9.4</summary>
         <p>A chunk is lost only if all three of its nodes are among the 50 that failed. For a chunk on three random nodes that probability is the number of triples inside the failed set over the number of triples in the cluster:</p>
         <p class="math">C(50,3) ÷ C(5001,3) = 19,600 ÷ 20,833,332,500 ≈ 1 in 1,060,000</p>
-        <p>Ten million chunks each face that one-in-a-million chance, so on average <span class="num">10,000,000 × 9.4×10<sup>−7</sup> ≈ 9.4</span> are lost per outage. This expectation does not depend on how replicas are placed, because a random outage is equally likely to contain any particular triple.</p>
+        <p>Ten million chunks each face that one-in-a-million chance, so on average <span class="num">10,000,000 × 9.4×10<sup>−7</sup> ≈ 9.4</span> are lost per outage. Under this model the expectation does not depend on how replicas are placed, because a uniformly random outage is equally likely to contain any particular triple. Correlated failures, such as a rack losing power, break that symmetry.</p>
         <p>The count of lost chunks is close to a Poisson variable with mean 9.4, so the chance of losing none is <span class="num">e<sup>−9.4</sup> ≈ 1 in 12,000</span>. That is where the 99.99% comes from: not from any one chunk being fragile, but from there being ten million of them.</p>
       </details>
     </div>
-    <div><button id="again1">Run another outage</button></div>
+    <div class="next"><button id="again1">Run another outage</button><a class="cont" href="#beat2">Next: change only the placement ↓</a></div>
   </div>
 </section>
 
@@ -220,7 +229,7 @@ button.choice{padding:12px 16px;font-size:15px}
   <div class="beat-head">
     <span class="k">2 · The switch</span>
     <h2>Change nothing about replication. Only change which nodes share chunks.</h2>
-    <p>Copysets: divide the cluster into 1,667 fixed groups of three. Every chunk lives on exactly one group. Same three copies, same storage, same nodes.</p>
+    <p>The simplest copyset construction, used here to expose the effect: divide the 5,001 nodes into 1,667 fixed groups of three, and put every chunk on exactly one group. Same three copies, same storage, same nodes. (Production Copyset Replication overlaps groups so failed nodes recover faster; see the notes at the end.)</p>
   </div>
   <div class="lab">
     <div class="bar">
@@ -228,6 +237,7 @@ button.choice{padding:12px 16px;font-size:15px}
         <button data-mode="random" aria-pressed="true">Random placement</button>
         <button data-mode="copy" aria-pressed="false">Copysets</button>
       </div>
+      <span class="hint" id="hint2">Random placement again, or switch to copysets</span>
       <div class="guess" id="guess2wrap" hidden><label for="guess2">Your guess now</label><input type="range" id="guess2" min="0" max="100" value="0" step="1"><span class="gv num" id="guess2v">0%</span></div>
       <div class="spacer"></div>
       <button class="primary" id="fail2">Fail 1% of nodes</button>
@@ -238,11 +248,11 @@ button.choice{padding:12px 16px;font-size:15px}
       <div class="stat"><div class="l">Chunks lost this outage</div><div class="v lost num" id="s2lost">–</div><div class="sub" id="s2lostsub">&nbsp;</div></div>
       <div class="stat"><div class="l">Chance of losing at least one chunk</div><div class="v num" id="s2p">–</div><div class="sub" id="s2psub">exact, per outage</div></div>
       <div class="stat" id="s2gwrap" hidden><div class="l">Your guess</div><div class="v num" id="s2guess">–</div><div class="sub">&nbsp;</div></div>
-      <div class="stat"><div class="l">Expected chunks lost per outage</div><div class="v num" id="s2e">9.4</div><div class="sub">identical under both placements</div></div>
+      <div class="stat"><div class="l">Expected chunks lost per outage</div><div class="v num" id="s2e">9.4</div><div class="sub">identical under both placements, given random failures</div></div>
     </div>
   </div>
   <div class="reveal" id="r2" hidden>
-    <div class="callout copy"><strong>Same expectation, by construction.</strong> A random outage is equally likely to swallow any particular triple. So the expected number of chunks lost is chunks × P(a given triple dies) no matter how you place replicas. Placement can't move the mean. It can only decide whether that mean arrives as a trickle or as a flood.</div>
+    <div class="callout copy"><strong>Same expectation, by construction.</strong> In this model the outage kills a uniformly random set of nodes, so it is equally likely to swallow any particular triple. The expected number of chunks lost is then chunks × P(a given triple dies), whatever the placement. Placement can't move the mean; it only decides whether the mean arrives as a trickle or as a flood. (With correlated failures, say a whole rack, placement does change the mean, which is what failure-domain-aware placement is for.)</div>
     <div class="unchanged">
       <div class="cell"><div class="l">Copies per chunk</div><div class="v">3 → 3</div></div>
       <div class="cell"><div class="l">Storage overhead</div><div class="v">3× → 3×</div></div>
@@ -250,6 +260,7 @@ button.choice{padding:12px 16px;font-size:15px}
       <div class="cell changed"><div class="l">Distinct triples holding data</div><div class="v">10,000,000 → 1,667</div></div>
       <div class="cell changed"><div class="l">Chance of any loss</div><div class="v">99.99% → <span id="u2p">0.16%</span></div></div>
     </div>
+    <div class="next"><a class="cont" href="#beat3">Next: a thousand outages ↓</a></div>
   </div>
 </section>
 
@@ -288,19 +299,17 @@ button.choice{padding:12px 16px;font-size:15px}
     </div>
     <div class="verdict" id="verdict" hidden>
       <div class="callout" id="verdict-text"></div>
-      <div class="callout copy"><strong>The paper's argument.</strong> Every data-loss incident carries a fixed cost: a page, an investigation, customer notices, a restore from cold backup. Losing 6,000 chunks in one incident costs little more than losing 9, because you run the same playbook either way. So the number that matters operationally is the probability of an incident, and copysets cut it by roughly <span class="num">600×</span> at no cost in storage or replication.</div>
+      <div class="callout copy"><strong>The paper's argument.</strong> When a data-loss incident carries a substantial fixed cost that does not scale with bytes lost (a page, an investigation, customer notices, a restore from backup), fewer and larger incidents are preferable to frequent small ones, because the fixed cost is paid per incident. Under that cost model the number to minimise is the probability of an incident, and copysets cut it by roughly <span class="num">600×</span> with no change in storage or replication.</div>
       <div class="callout lost"><strong>Where it flips.</strong> If your cost is proportional to bytes lost, with no fixed cost per incident, the two clusters are equivalent and the argument evaporates. Expected loss is not the wrong metric. It's the wrong metric on its own. Reliability is a distribution, and you need to know which shape your cost function punishes.</div>
     </div>
   </div>
 </section>
 
-<section class="beat" id="anycluster">
-  <div class="beat-head">
-    <span class="k">4 · Any cluster</span>
-    <h2>Does it hold at your size?</h2>
-    <p>Exact closed forms. The effect grows as the outage gets smaller relative to the cluster and shrinks as it gets larger.</p>
-  </div>
-  <div class="sandbox">
+<section class="beat optional" id="anycluster">
+  <details>
+    <summary><span class="k">Optional</span><span class="t">Does it hold at other sizes? Exact numbers for any cluster.</span></summary>
+    <p class="lead">The effect grows as the outage gets smaller relative to the cluster and shrinks as it gets larger.</p>
+    <div class="sandbox">
     <div class="ctl">
       <label><span class="row"><span>Nodes</span><b id="sbNv">5,001</b></span><input type="range" id="sbN" min="0" max="100" value="43"></label>
       <label><span class="row"><span>Nodes failing at once</span><b id="sbFv">1.0%</b></span><input type="range" id="sbF" min="1" max="50" value="10"></label>
@@ -313,7 +322,8 @@ button.choice{padding:12px 16px;font-size:15px}
       <div class="cell"><div class="l">Incident size when copysets lose</div><div class="v copy" id="sbS">–</div><div class="sub">chunks, one whole group</div></div>
       <div class="cell"><div class="l">Incident probability ratio</div><div class="v" id="sbR">–</div><div class="sub">random ÷ copysets</div></div>
     </div>
-  </div>
+    </div>
+  </details>
 </section>
 
 <section class="caveats">
@@ -322,7 +332,7 @@ button.choice{padding:12px 16px;font-size:15px}
     <ul>
       <li><strong>Scatter width.</strong> Fixed groups of three are the extreme case. A dead node in such a group can only be rebuilt from two peers, which is slow. Real copyset designs let each node share groups with about ten others, trading a little incident probability for recovery speed. The shape of the result is the same.</li>
       <li><strong>The failure model.</strong> One percent of nodes chosen at random, dying together before anything can be re-replicated. Correlated failures within a rack or power domain are a different problem, handled by failure-domain-aware placement.</li>
-      <li><strong>Simulation honesty.</strong> Probabilities and expectations are exact closed forms. The outages you watch are sampled from the exact loss distribution rather than from ten million stored placements, so the page stays small and fast.</li>
+      <li><strong>What is exact and what is sampled.</strong> Expected loss and the random-placement probability are closed forms. The copysets probability is computed by inclusion–exclusion over the 1,667 groups for exactly 50 failed nodes drawn without replacement (the page falls back to an independence approximation only in the optional explorer when the expected number of dead groups exceeds 25, where both round to 100%). The outages you watch are sampled from those exact distributions rather than from ten million stored placements, so the page stays small and fast.</li>
     </ul>
     <p class="credit">The mechanism is from <em>Copysets: Reducing the Frequency of Data Loss in Cloud Storage</em>, Cidon, Rumble, Stutsman, Katti, Ousterhout and Rosenblum, USENIX ATC 2013. This page exists to make one consequence of that paper felt: two systems with identical expected loss can differ hundreds of times in how often you lose anything.</p>
   </div>
@@ -339,7 +349,16 @@ const N=5001, R=3, M=10_000_000, F=50, G=Math.floor(N/R);
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function pTriple(F,N){ return F*(F-1)*(F-2)/(N*(N-1)*(N-2)); }
 function pAny(p,k){ return -Math.expm1(k*Math.log1p(-p)); }
-const P=pTriple(F,N), P_RANDOM=pAny(P,M), P_COPY=pAny(P,G), E_LOSS=M*P, GROUP_SIZE=M/G;
+// Exact P(at least one disjoint triple lies inside a uniformly random F-subset of N nodes), by inclusion-exclusion:
+// P(none) = sum_k (-1)^k C(G,k) * prod_{i<3k} (F-i)/(N-i).  Well-conditioned while the expected number of dead
+// groups (the k=1 term) is small; beyond ~25 both this and the independence formula round to 100%.
+function pCopyExact(N,F,G){
+  const lam=G*(F*(F-1)*(F-2))/(N*(N-1)*(N-2)); if(lam>25||F<3) return pAny(pTriple(F,N),G);
+  let sum=1, cg=1, prod=1, i=0;
+  for(let k=1;k<=Math.floor(F/3)&&k<=G;k++){ cg*=(G-k+1)/k; for(let j=0;j<3;j++){prod*=(F-i)/(N-i);i++;} const term=cg*prod; sum+=(k%2?-term:term); if(term<1e-18)break; }
+  return Math.min(1,Math.max(0,1-sum));
+}
+const P=pTriple(F,N), P_RANDOM=pAny(P,M), P_COPY=pCopyExact(N,F,G), E_LOSS=M*P, GROUP_SIZE=M/G;
 function gauss(){ let u=0,v=0; while(u===0)u=Math.random(); while(v===0)v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
 function poisson(l){ if(l<=0)return 0; if(l<40){const L=Math.exp(-l);let k=0,p=1;do{k++;p*=Math.random();}while(p>L);return k-1;} return Math.max(0,Math.round(l+Math.sqrt(l)*gauss())); }
 function binomial(n,p){ const m=n*p; if(m<40) return poisson(m); return Math.max(0,Math.round(m+Math.sqrt(m*(1-p))*gauss())); }
@@ -408,9 +427,6 @@ class Grid{
     ctx.fillStyle=node; ctx.beginPath(); for(let i=0;i<N;i++){ if(this.state[i]!==0)continue; ctx.moveTo(this.pos[2*i]+r,this.pos[2*i+1]); ctx.arc(this.pos[2*i],this.pos[2*i+1],r,0,Math.PI*2);} ctx.fill();
     ctx.fillStyle=dead; ctx.beginPath(); for(let i=0;i<N;i++){ if(this.state[i]!==1)continue; ctx.moveTo(this.pos[2*i]+r+0.6,this.pos[2*i+1]); ctx.arc(this.pos[2*i],this.pos[2*i+1],r+0.6,0,Math.PI*2);} ctx.fill();
     ctx.fillStyle=lost; ctx.beginPath(); for(let i=0;i<N;i++){ if(this.state[i]!==2)continue; ctx.moveTo(this.pos[2*i]+r+1.8,this.pos[2*i+1]); ctx.arc(this.pos[2*i],this.pos[2*i+1],r+1.8,0,Math.PI*2);} ctx.fill();
-    if(this.tris&&this.tris.length){ ctx.strokeStyle=lost; ctx.lineWidth=0.8; ctx.globalAlpha=0.7;
-      for(const [a,b,d] of this.tris){ ctx.beginPath(); ctx.moveTo(this.pos[2*a],this.pos[2*a+1]); ctx.lineTo(this.pos[2*b],this.pos[2*b+1]); ctx.lineTo(this.pos[2*d],this.pos[2*d+1]); ctx.closePath(); ctx.stroke(); }
-      ctx.globalAlpha=1; }
     if(this.mode==='copy'){ ctx.strokeStyle=lost; ctx.lineWidth=1.5; for(const g of this.lostGroups||[]){ const i=3*g; const cx=(this.pos[2*i]+this.pos[2*i+2]+this.pos[2*i+4])/3, cy=(this.pos[2*i+1]+this.pos[2*i+3]+this.pos[2*i+5])/3; ctx.beginPath(); ctx.arc(cx,cy,9,0,Math.PI*2); ctx.stroke(); } }
   }
   showOutage(o,done,onCount){
@@ -449,7 +465,7 @@ guess2.addEventListener('input',()=>{document.getElementById('guess2v').textCont
 document.querySelectorAll('#beat2 .seg button').forEach(b=>b.addEventListener('click',()=>{
   mode2=b.dataset.mode; document.querySelectorAll('#beat2 .seg button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
   document.getElementById('lg-copy').hidden=mode2!=='copy'; document.getElementById('lg-copy2').hidden=mode2!=='copy'; document.getElementById('lg-rand').hidden=mode2==='copy'; g2.setMode(mode2);
-  document.getElementById('guess2wrap').hidden=mode2!=='copy'; document.getElementById('s2gwrap').hidden=mode2!=='copy';
+  document.getElementById('guess2wrap').hidden=mode2!=='copy'; document.getElementById('s2gwrap').hidden=mode2!=='copy'; document.getElementById('hint2').hidden=mode2==='copy';
   document.getElementById('fail2').disabled=(mode2==='copy'&&!guess2touched);
   document.getElementById('s2lost').textContent='–'; document.getElementById('s2lostsub').innerHTML='&nbsp;';
   document.getElementById('s2p').textContent=fmtPct(mode2==='copy'?P_COPY:P_RANDOM);
@@ -509,7 +525,7 @@ document.getElementById('run1000').addEventListener('click',()=>{
 function pick(which){
   const v=document.getElementById('verdict'), t=document.getElementById('verdict-text');
   t.innerHTML= which==='r' ? '<strong>You chose the trickle.</strong> Reasonable if every lost chunk costs you the same regardless of when it goes: you get a steady, predictable bleed you can budget for. But every one of those outages is an incident someone has to handle.'
-                            : '<strong>You chose the flood.</strong> Years of silence, then a bad week. The bet is that one large incident costs less than a thousand small ones, which is true when incidents have a fixed cost and false when cost scales with bytes.';
+                            : '<strong>You chose the flood.</strong> Years of silence, then a bad week. The bet is that one large incident costs less than a thousand small ones, which holds when incidents carry a substantial fixed cost and fails when cost scales with bytes.';
   v.hidden=false; v.scrollIntoView({behavior:reduced?'auto':'smooth',block:'nearest'});
 }
 document.getElementById('pick-r').addEventListener('click',()=>pick('r'));
@@ -518,9 +534,9 @@ document.getElementById('pick-c').addEventListener('click',()=>pick('c'));
 // ---------- sandbox ----------
 const sbN=document.getElementById('sbN'), sbF=document.getElementById('sbF'), sbM=document.getElementById('sbM');
 function sbCalc(){
-  const n=Math.round(Math.pow(10, 2.71+ sbN.value/100*2.3)); // 513 .. 102k; slider at 43 gives 5,001
+  const n=Math.round(Math.pow(10, 2.71006+ sbN.value/100*2.3)); // 513 .. 102k; slider at 43 gives exactly 5,001
   const fp=sbF.value/10; const f=Math.max(3,Math.round(n*fp/100)); const m=Math.round(Math.pow(10, 5+sbM.value/100*4)); // 1e5..1e9
-  const g=Math.floor(n/3), p=pTriple(f,n), pr=pAny(p,m), pc=pAny(p,g), e=m*p;
+  const g=Math.floor(n/3), p=pTriple(f,n), pr=pAny(p,m), pc=pCopyExact(n,f,g), e=m*p;
   document.getElementById('sbNv').textContent=fmtInt(n); document.getElementById('sbFv').textContent=fp.toFixed(1)+'% ('+fmtInt(f)+' nodes)'; document.getElementById('sbMv').textContent=fmtInt(m);
   document.getElementById('sbPr').textContent=fmtPct(pr); document.getElementById('sbPc').textContent=fmtPct(pc);
   document.getElementById('sbE').textContent=e>=100?fmtInt(Math.round(e)):e>=1?e.toFixed(1):e.toFixed(3);
