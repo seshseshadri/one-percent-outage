@@ -94,13 +94,9 @@ button.choice{padding:12px 16px;font-size:15px}
 .legend i.copy{background:var(--copy)}
 .legend i.ring{background:transparent;border:2px solid var(--lost)}
 .hint{font-size:12px;color:var(--ink-3)}
-.next{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.cont{font-family:var(--f-display);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);border-bottom:2px solid var(--line-strong)}
-.cont:hover{border-bottom-color:var(--ink)}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+
 .explain{margin-top:8px}
-.explain summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--random);list-style:none;display:inline-flex;align-items:center;gap:6px}
+.explain summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--ink-2);list-style:none;display:inline-flex;align-items:center;gap:6px}
 .explain summary::-webkit-details-marker{display:none}
 .explain summary::before{content:"+";font-family:var(--f-mono);width:16px;height:16px;border:1px solid currentColor;border-radius:3px;display:inline-grid;place-items:center;font-size:12px;line-height:1}
 .explain[open] summary::before{content:"–"}
@@ -184,7 +180,7 @@ html{scroll-behavior:smooth}
       <div><span class="eyebrow">Cluster</span><span class="v">5,001 nodes <span class="dim">(1,667 × 3)</span></span></div>
       <div><span class="eyebrow">Data</span><span class="v">10,000,000 chunks · 64 MB each · 640 TB</span></div>
       <div><span class="eyebrow">Replication</span><span class="v">3 copies, 3 different nodes</span></div>
-      <div><span class="eyebrow">Failure</span><span class="v">50 random nodes (1%) at once</span></div>
+      <div><span class="eyebrow">Outage</span><span class="v">50 random nodes (1%) fail at once</span></div>
     </div>
   </div>
 </header>
@@ -195,7 +191,7 @@ html{scroll-behavior:smooth}
   <div class="beat-head">
     <span class="k">1 · The bet</span>
     <h2>Replicas land on random nodes. Fifty nodes die. What's the chance you lost at least one chunk?</h2>
-    <p>Each chunk survives unless all three of its nodes are among the fifty. Set your guess, then pull the plug.</p>
+    <p>Each chunk survives unless all three of its nodes are among the fifty. Set your guess, then click <strong>Fail 1% of nodes</strong>.</p>
   </div>
   <div class="lab">
     <div class="bar">
@@ -213,7 +209,7 @@ html{scroll-behavior:smooth}
     </div>
   </div>
   <div class="reveal" id="r1" hidden>
-    <div class="callout random"><strong>Expected chunks lost per outage, by theory: <span class="num">9.4</span>.</strong> Three replicas make each chunk safe; ten million chunks make the cluster unsafe.
+    <div class="callout random"><strong>Expected chunks lost per outage: <span class="num">9.4</span>.</strong>
       <details class="explain"><summary>Explain the 9.4</summary>
         <p>A chunk is lost only if all three of its nodes are among the 50 that failed. For a chunk on three random nodes that probability is the number of triples inside the failed set over the number of triples in the cluster:</p>
         <p class="math">C(50,3) ÷ C(5001,3) = 19,600 ÷ 20,833,332,500 ≈ 1 in 1,060,000</p>
@@ -221,7 +217,7 @@ html{scroll-behavior:smooth}
         <p>The count of lost chunks is close to a Poisson variable with mean 9.4, so the chance of losing none is <span class="num">e<sup>−9.4</sup> ≈ 1 in 12,000</span>. That is where the 99.99% comes from: not from any one chunk being fragile, but from there being ten million of them.</p>
       </details>
     </div>
-    <div class="next"><button id="again1">Run another outage</button><a class="cont" href="#beat2">Next: change only the placement ↓</a></div>
+    <div><button id="again1">Run another outage</button></div>
   </div>
 </section>
 
@@ -252,22 +248,26 @@ html{scroll-behavior:smooth}
     </div>
   </div>
   <div class="reveal" id="r2" hidden>
-    <div class="callout copy"><strong>Same expectation, by construction.</strong> In this model the outage kills a uniformly random set of nodes, so it is equally likely to swallow any particular triple. The expected number of chunks lost is then chunks × P(a given triple dies), whatever the placement. Placement can't move the mean; it only decides whether the mean arrives as a trickle or as a flood. (With correlated failures, say a whole rack, placement does change the mean, which is what failure-domain-aware placement is for.)</div>
+    <div class="callout copy"><strong>Copysets lose data far less often. When they do, they lose far more at once.</strong> Multiply the two and the expected chunks lost per outage comes out the same: <span class="num">9.4</span>.
+      <details class="explain"><summary>Why exactly the same</summary>
+        <p>In this model an outage kills a uniformly random set of nodes, so it is equally likely to take out any particular triple of nodes. A chunk is lost when its triple is taken out, and that chance is the same for every chunk no matter which triple it sits on. So the expected chunks lost per outage is fixed by the cluster size, the outage size and the chunk count alone. Placement decides only whether that expectation arrives as a trickle or as a flood.</p>
+        <p>This symmetry breaks under correlated failures, such as a rack losing power. There, placement does change the expectation, which is what failure-domain-aware placement is for.</p>
+      </details>
+    </div>
     <div class="unchanged">
       <div class="cell"><div class="l">Copies per chunk</div><div class="v">3 → 3</div></div>
       <div class="cell"><div class="l">Storage overhead</div><div class="v">3× → 3×</div></div>
-      <div class="cell"><div class="l">Expected loss per outage</div><div class="v">9.4 → 9.4</div></div>
+      <div class="cell"><div class="l">Expected chunks lost per outage</div><div class="v">9.4 → 9.4</div></div>
       <div class="cell changed"><div class="l">Distinct triples holding data</div><div class="v">10,000,000 → 1,667</div></div>
       <div class="cell changed"><div class="l">Chance of any loss</div><div class="v">99.99% → <span id="u2p">0.16%</span></div></div>
     </div>
-    <div class="next"><a class="cont" href="#beat3">Next: a thousand outages ↓</a></div>
   </div>
 </section>
 
 <section class="beat" id="beat3">
   <div class="beat-head">
     <span class="k">3 · The distribution</span>
-    <h2>Same expected loss. Very different incident logs.</h2>
+    <h2>Same expected chunks lost per outage. Very different incident logs.</h2>
     <p>Simulate one thousand of these outages under each placement and watch where the losses land.</p>
   </div>
   <div class="lab">
@@ -292,9 +292,9 @@ html{scroll-behavior:smooth}
     </div>
   </div>
   <div class="reveal" id="r3" hidden>
-    <div class="callout"><strong>Read the two charts.</strong> Random placement loses a little data in almost every outage. Copysets lose nothing in almost every outage, and when they do lose, they lose a whole group at once, about <span class="num">6,000</span> chunks. The expected totals are the same. The copysets total takes far longer to settle on that expectation, because it arrives in rare lumps. A year of operations may not look like the mean at all.</div>
+    <div class="callout"><strong>Read the two charts.</strong> Random placement loses a little data in almost every outage. Copysets lose nothing in almost every outage, and when they do lose, they lose a whole group at once, about <span class="num">6,000</span> chunks. The expected chunks lost per outage is the same, so the expected totals are the same. The copysets total takes far longer to settle on that expectation, because it arrives in rare lumps. A year of operations may not look like the mean at all.</div>
     <div class="choose">
-      <h3>Both clusters have the same expected loss. Which one would you rather run?</h3>
+      <h3>Both clusters have the same expected chunks lost per outage. Which one would you rather run?</h3>
       <div class="btns"><button class="choice" id="pick-r">Random: small losses, almost every outage</button><button class="choice" id="pick-c">Copysets: no loss for years, then a big one</button></div>
     </div>
     <div class="verdict" id="verdict" hidden>
@@ -318,7 +318,7 @@ html{scroll-behavior:smooth}
     <div class="out">
       <div class="cell"><div class="l">Chance of any loss · random</div><div class="v random" id="sbPr">–</div><div class="sub" id="sbTr">triples in use: –</div></div>
       <div class="cell"><div class="l">Chance of any loss · copysets</div><div class="v copy" id="sbPc">–</div><div class="sub" id="sbTc">groups: –</div></div>
-      <div class="cell"><div class="l">Expected chunks lost · both</div><div class="v" id="sbE">–</div><div class="sub">per outage</div></div>
+      <div class="cell"><div class="l">Expected chunks lost per outage</div><div class="v" id="sbE">–</div><div class="sub">same under both placements</div></div>
       <div class="cell"><div class="l">Incident size when copysets lose</div><div class="v copy" id="sbS">–</div><div class="sub">chunks, one whole group</div></div>
       <div class="cell"><div class="l">Incident probability ratio</div><div class="v" id="sbR">–</div><div class="sub">random ÷ copysets</div></div>
     </div>
@@ -332,9 +332,9 @@ html{scroll-behavior:smooth}
     <ul>
       <li><strong>Scatter width.</strong> Fixed groups of three are the extreme case. A dead node in such a group can only be rebuilt from two peers, which is slow. Real copyset designs let each node share groups with about ten others, trading a little incident probability for recovery speed. The shape of the result is the same.</li>
       <li><strong>The failure model.</strong> One percent of nodes chosen at random, dying together before anything can be re-replicated. Correlated failures within a rack or power domain are a different problem, handled by failure-domain-aware placement.</li>
-      <li><strong>What is exact and what is sampled.</strong> Expected loss and the random-placement probability are closed forms. The copysets probability is computed by inclusion–exclusion over the 1,667 groups for exactly 50 failed nodes drawn without replacement (the page falls back to an independence approximation only in the optional explorer when the expected number of dead groups exceeds 25, where both round to 100%). The outages you watch are sampled from those exact distributions rather than from ten million stored placements, so the page stays small and fast.</li>
+      <li><strong>What is exact and what is sampled.</strong> Expected chunks lost per outage and the random-placement probability are closed forms. The copysets probability is computed by inclusion–exclusion over the 1,667 groups for exactly 50 failed nodes drawn without replacement (the page falls back to an independence approximation only in the optional explorer when the expected number of dead groups exceeds 25, where both round to 100%). The outages you watch are sampled from those exact distributions rather than from ten million stored placements, so the page stays small and fast.</li>
     </ul>
-    <p class="credit">The mechanism is from <em>Copysets: Reducing the Frequency of Data Loss in Cloud Storage</em>, Cidon, Rumble, Stutsman, Katti, Ousterhout and Rosenblum, USENIX ATC 2013. This page exists to make one consequence of that paper felt: two systems with identical expected loss can differ hundreds of times in how often you lose anything.</p>
+    <p class="credit">The mechanism is from <em>Copysets: Reducing the Frequency of Data Loss in Cloud Storage</em>, Cidon, Rumble, Stutsman, Katti, Ousterhout and Rosenblum, USENIX ATC 2013. This page exists to make one consequence of that paper felt: two clusters with the same expected chunks lost per outage can differ hundreds of times in how often you lose anything.</p>
   </div>
 </section>
 
