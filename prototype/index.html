@@ -1,0 +1,531 @@
+<title>The 1% Outage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f4f5f7; --surface:#ffffff; --surface-2:#e9ecf1; --line:#d3d8e0; --line-strong:#aeb6c2;
+  --ink:#141a24; --ink-2:#4a5566; --ink-3:#7a8595;
+  --random:#2F6BD6; --random-soft:#dbe6fb; --copy:#A67C0F; --copy-soft:#f6ead0;
+  --lost:#D2413F; --lost-soft:#fbe0df; --dead:#141a24; --node:#c3cad6; --node-dim:#dde2ea;
+  --focus:#2F6BD6;
+  --f-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111418; --surface:#181c22; --surface-2:#20262e; --line:#2c343f; --line-strong:#465061;
+    --ink:#e8ecf2; --ink-2:#aeb7c4; --ink-3:#7c8797;
+    --random:#5F8DE8; --random-soft:#1d2c48; --copy:#A3821F; --copy-soft:#3a2f12;
+    --lost:#e0605c; --lost-soft:#4a1f1e; --dead:#05070a; --node:#3d4653; --node-dim:#2a313b;
+    --focus:#5F8DE8;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111418; --surface:#181c22; --surface-2:#20262e; --line:#2c343f; --line-strong:#465061;
+  --ink:#e8ecf2; --ink-2:#aeb7c4; --ink-3:#7c8797;
+  --random:#5F8DE8; --random-soft:#1d2c48; --copy:#A3821F; --copy-soft:#3a2f12;
+  --lost:#e0605c; --lost-soft:#4a1f1e; --dead:#05070a; --node:#3d4653; --node-dim:#2a313b;
+  --focus:#5F8DE8;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.prose{max-width:66ch}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.1}
+h1{font-size:clamp(40px,7vw,68px);font-weight:700;letter-spacing:-.02em}
+h2{font-size:clamp(24px,3.4vw,32px);font-weight:700;letter-spacing:-.01em}
+h3{font-size:18px;font-weight:600}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+header.hero{padding:56px 0 28px;border-bottom:1px solid var(--line)}
+header.hero .dek{font-size:20px;color:var(--ink-2);margin-top:18px;max-width:60ch}
+header.hero .setup{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px}
+header.hero .setup div{display:flex;flex-direction:column;gap:2px}
+header.hero .setup .v{font-family:var(--f-mono);font-size:15px}
+section.beat{padding:44px 0 8px}
+section.beat + section.beat{border-top:1px solid var(--line)}
+.beat-head{display:grid;grid-template-columns:auto 1fr;gap:16px 20px;align-items:baseline;margin-bottom:18px}
+.beat-head .k{font-family:var(--f-display);font-size:14px;font-weight:700;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;padding-top:4px}
+.beat-head p{grid-column:2;color:var(--ink-2);max-width:66ch}
+.lab{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.lab .bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+.lab .bar .spacer{flex:1}
+.lab canvas{display:block;width:100%;height:auto;background:var(--surface)}
+.lab .foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border-top:1px solid var(--line)}
+.lab .foot .stat{padding:12px 16px;border-right:1px solid var(--line)}
+.lab .foot .stat:last-child{border-right:0}
+.stat .l{font-size:12px;color:var(--ink-3);letter-spacing:.02em}
+.stat .v{font-family:var(--f-mono);font-size:22px;font-variant-numeric:tabular-nums;margin-top:2px}
+.stat .v.small{font-size:16px}
+.stat .v.lost{color:var(--lost)}
+.stat .v.random{color:var(--random)}
+.stat .v.copy{color:var(--copy)}
+.stat .sub{font-size:12px;color:var(--ink-3);margin-top:2px}
+button{font:inherit;font-weight:600;font-size:14px;padding:9px 14px;border-radius:4px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);cursor:pointer}
+button.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:disabled{opacity:.45;cursor:default}
+button.choice{padding:12px 16px;font-size:15px}
+.seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:4px;overflow:hidden}
+.seg button{border:0;border-radius:0;background:transparent;font-weight:500;padding:8px 14px}
+.seg button + button{border-left:1px solid var(--line-strong)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button[data-mode="random"][aria-pressed="true"]{background:var(--random)}
+.seg button[data-mode="copy"][aria-pressed="true"]{background:var(--copy)}
+.guess{display:flex;align-items:center;gap:12px}
+.guess input[type=range]{width:180px;accent-color:var(--random)}
+.guess .gv{font-family:var(--f-mono);min-width:5ch;text-align:right}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--ink-2);padding:8px 16px 0}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--node)}
+.legend i.dead{background:var(--dead)}
+.legend i.lost{background:var(--lost)}
+.legend i.copy{background:var(--copy)}
+.legend i.tri{width:0;height:0;border-radius:0;background:transparent;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid var(--lost)}
+.legend i.ring{background:transparent;border:2px solid var(--lost)}
+.hint{font-size:12px;color:var(--ink-3)}
+.eq{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px 10px}
+.eq .term{flex:1 1 150px;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:4px}
+.eq .term .v{font-family:var(--f-mono);font-size:24px;font-variant-numeric:tabular-nums;line-height:1.1}
+.eq .term .l{font-size:12px;color:var(--ink-2);margin-top:6px;line-height:1.35}
+.eq .term.lost{border-color:var(--lost)} .eq .term.lost .v{color:var(--lost)}
+.eq .op{align-self:center;font-family:var(--f-display);font-size:22px;color:var(--ink-3)}
+.note{color:var(--ink-2);max-width:66ch}
+.explain{margin-top:8px}
+.explain summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--random);list-style:none;display:inline-flex;align-items:center;gap:6px}
+.explain summary::-webkit-details-marker{display:none}
+.explain summary::before{content:"+";font-family:var(--f-mono);width:16px;height:16px;border:1px solid currentColor;border-radius:3px;display:inline-grid;place-items:center;font-size:12px;line-height:1}
+.explain[open] summary::before{content:"–"}
+.explain p{margin-top:10px;color:var(--ink-2);font-size:15px}
+.explain p.math{font-family:var(--f-mono);font-size:14px;color:var(--ink);background:var(--surface-2);padding:8px 12px;border-radius:4px;overflow-x:auto}
+.reveal{margin-top:16px;display:grid;gap:12px}
+.reveal[hidden]{display:none}
+.callout{border-left:3px solid var(--ink);padding:10px 16px;background:var(--surface);border-radius:0 4px 4px 0;max-width:70ch}
+.callout.random{border-left-color:var(--random)}
+.callout.copy{border-left-color:var(--copy)}
+.callout.lost{border-left-color:var(--lost)}
+.callout strong{font-weight:600}
+.unchanged{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:14px}
+.unchanged .cell{padding:10px 12px;border:1px dashed var(--line-strong);border-radius:4px}
+.unchanged .cell .l{font-size:12px;color:var(--ink-3)}
+.unchanged .cell .v{font-family:var(--f-mono);font-size:16px;margin-top:2px}
+.unchanged .cell.changed{border-style:solid;border-color:var(--copy);background:var(--copy-soft)}
+.timeline{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.timeline .panel{padding:12px 16px 8px}
+.timeline .panel + .panel{border-left:1px solid var(--line)}
+.timeline .ph{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.timeline .ph .t{font-weight:600}
+.timeline .ph .t.random{color:var(--random)}
+.timeline .ph .t.copy{color:var(--copy)}
+.timeline .ph .c{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.timeline canvas{width:100%;height:auto}
+.totals{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.totals .stat + .stat{border-left:1px solid var(--line)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-family:var(--f-mono);font-size:12px;padding:6px 8px;border-radius:3px;transform:translate(-50%,-130%);white-space:nowrap;z-index:5}
+.tip[hidden]{display:none}
+.choose{margin-top:22px;display:grid;gap:12px}
+.choose .btns{display:flex;flex-wrap:wrap;gap:10px}
+.verdict{display:grid;gap:12px}
+.verdict[hidden]{display:none}
+.sandbox{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:24px;align-items:start}
+.sandbox .ctl{display:grid;gap:14px}
+.sandbox label{display:grid;gap:4px;font-size:13px;color:var(--ink-2)}
+.sandbox label .row{display:flex;justify-content:space-between;align-items:baseline}
+.sandbox label .row b{font-family:var(--f-mono);font-weight:500;color:var(--ink)}
+.sandbox input[type=range]{width:100%;accent-color:var(--ink)}
+.sandbox .out{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.sandbox .out .cell{padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+.sandbox .out .cell .l{font-size:12px;color:var(--ink-3)}
+.sandbox .out .cell .v{font-family:var(--f-mono);font-size:20px;margin-top:2px}
+.sandbox .out .cell .v.random{color:var(--random)}
+.sandbox .out .cell .v.copy{color:var(--copy)}
+.sandbox .out .cell .sub{font-size:12px;color:var(--ink-3)}
+.caveats{padding:40px 0 60px;border-top:1px solid var(--line);margin-top:32px}
+.caveats ul{margin:14px 0 0;padding-left:20px;max-width:70ch;color:var(--ink-2)}
+.caveats li{margin:6px 0}
+.caveats .credit{margin-top:22px;font-size:14px;color:var(--ink-3);max-width:70ch}
+@media (max-width:720px){
+  .timeline,.totals,.sandbox{grid-template-columns:1fr}
+  .timeline .panel + .panel{border-left:0;border-top:1px solid var(--line)}
+  .totals .stat + .stat{border-left:0;border-top:1px solid var(--line)}
+  .beat-head{grid-template-columns:1fr}
+  .beat-head p{grid-column:1}
+}
+@media (prefers-reduced-motion: reduce){ .anim{transition:none !important} }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Replica placement · a reliability experiment</div>
+    <h1>The 1% Outage</h1>
+    <p class="dek">Three replicas of everything. One percent of the machines die at once. How often do you lose data? The answer depends on something replication factor doesn't measure.</p>
+    <div class="setup">
+      <div><span class="eyebrow">Cluster</span><span class="v">5,001 nodes</span></div>
+      <div><span class="eyebrow">Data</span><span class="v">10,000,000 chunks · 64 MB each · 640 TB</span></div>
+      <div><span class="eyebrow">Replication</span><span class="v">3 copies, 3 different nodes</span></div>
+      <div><span class="eyebrow">Failure</span><span class="v">50 random nodes (1%) at once</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="beat" id="beat1">
+  <div class="beat-head">
+    <span class="k">1 · The bet</span>
+    <h2>Replicas land on random nodes. Fifty nodes die. What's the chance you lost at least one chunk?</h2>
+    <p>Each chunk survives unless all three of its nodes are among the fifty. Set your guess, then pull the plug.</p>
+  </div>
+  <div class="lab">
+    <div class="bar">
+      <div class="guess"><label for="guess">Your guess</label><input type="range" id="guess" min="0" max="100" value="0" step="1"><span class="gv num" id="guessv">0%</span></div>
+      <span class="hint" id="hint1">Move the slider to lock in a guess</span>
+      <div class="spacer"></div>
+      <button class="primary" id="fail1" disabled>Fail 1% of nodes</button>
+    </div>
+    <div class="legend"><span><i></i>node</span><span><i class="dead"></i>failed node</span><span><i class="lost"></i>failed node holding a chunk whose other two copies also failed</span></div>
+    <canvas id="c1" width="900" height="560" aria-label="Grid of 5,001 storage nodes"></canvas>
+    <div class="foot">
+      <div class="stat"><div class="l">Chunks lost this outage</div><div class="v lost num" id="s1lost">–</div><div class="sub" id="s1lostsub">of 10,000,000</div></div>
+      <div class="stat"><div class="l">Chance of losing at least one chunk</div><div class="v num" id="s1p">–</div><div class="sub">exact, per outage</div></div>
+      <div class="stat"><div class="l">Your guess</div><div class="v num" id="s1guess">–</div><div class="sub">&nbsp;</div></div>
+    </div>
+  </div>
+  <div class="reveal" id="r1" hidden>
+    <div class="callout random"><strong>Expected chunks lost per outage, by theory: <span class="num">9.4</span>.</strong> Three replicas make each chunk safe; ten million chunks make the cluster unsafe.
+      <details class="explain"><summary>Explain the 9.4</summary>
+        <p>A chunk is lost only if all three of its nodes are among the 50 that failed. For a chunk on three random nodes that probability is the number of triples inside the failed set over the number of triples in the cluster:</p>
+        <p class="math">C(50,3) ÷ C(5001,3) = 19,600 ÷ 20,833,332,500 ≈ 1 in 1,060,000</p>
+        <p>Ten million chunks each face that one-in-a-million chance, so on average <span class="num">10,000,000 × 9.4×10<sup>−7</sup> ≈ 9.4</span> are lost per outage. This expectation does not depend on how replicas are placed, because a random outage is equally likely to contain any particular triple.</p>
+        <p>The count of lost chunks is close to a Poisson variable with mean 9.4, so the chance of losing none is <span class="num">e<sup>−9.4</sup> ≈ 1 in 12,000</span>. That is where the 99.99% comes from: not from any one chunk being fragile, but from there being ten million of them.</p>
+      </details>
+    </div>
+    <div><button id="again1">Run another outage</button></div>
+  </div>
+</section>
+
+<section class="beat" id="beat2">
+  <div class="beat-head">
+    <span class="k">2 · The switch</span>
+    <h2>Change nothing about replication. Only change which nodes share chunks.</h2>
+    <p>Copysets: divide the cluster into 1,667 fixed groups of three. Every chunk lives on exactly one group. Same three copies, same storage, same nodes.</p>
+  </div>
+  <div class="lab">
+    <div class="bar">
+      <div class="seg" role="group" aria-label="Replica placement">
+        <button data-mode="random" aria-pressed="true">Random placement</button>
+        <button data-mode="copy" aria-pressed="false">Copysets</button>
+      </div>
+      <div class="guess" id="guess2wrap" hidden><label for="guess2">Your guess now</label><input type="range" id="guess2" min="0" max="100" value="0" step="1"><span class="gv num" id="guess2v">0%</span></div>
+      <div class="spacer"></div>
+      <button class="primary" id="fail2">Fail 1% of nodes</button>
+    </div>
+    <div class="legend"><span><i></i>node</span><span><i class="dead"></i>failed node</span><span id="lg-rand"><i class="lost"></i>failed node holding a chunk whose other two copies also failed</span><span id="lg-copy" hidden><i class="copy"></i>a group of three that share all their chunks</span><span id="lg-copy2" hidden><i class="ring"></i>a group whose three nodes all failed: every chunk on it is gone</span></div>
+    <canvas id="c2" width="900" height="560" aria-label="Grid of 5,001 storage nodes, grouped when copysets is selected"></canvas>
+    <div class="foot">
+      <div class="stat"><div class="l">Chunks lost this outage</div><div class="v lost num" id="s2lost">–</div><div class="sub" id="s2lostsub">&nbsp;</div></div>
+      <div class="stat"><div class="l">Chance of losing at least one chunk</div><div class="v num" id="s2p">–</div><div class="sub" id="s2psub">exact, per outage</div></div>
+      <div class="stat" id="s2gwrap" hidden><div class="l">Your guess</div><div class="v num" id="s2guess">–</div><div class="sub">&nbsp;</div></div>
+      <div class="stat"><div class="l">Expected chunks lost per outage</div><div class="v num" id="s2e">9.4</div><div class="sub">identical under both placements</div></div>
+    </div>
+  </div>
+  <div class="reveal" id="r2" hidden>
+    <div class="callout copy"><strong>Same expectation, by construction.</strong> A random outage is equally likely to swallow any particular triple. So the expected number of chunks lost is chunks × P(a given triple dies) no matter how you place replicas. Placement can't move the mean. It can only decide whether that mean arrives as a trickle or as a flood.</div>
+    <div class="unchanged">
+      <div class="cell"><div class="l">Copies per chunk</div><div class="v">3 → 3</div></div>
+      <div class="cell"><div class="l">Storage overhead</div><div class="v">3× → 3×</div></div>
+      <div class="cell"><div class="l">Expected loss per outage</div><div class="v">9.4 → 9.4</div></div>
+      <div class="cell changed"><div class="l">Distinct triples holding data</div><div class="v">10,000,000 → 1,667</div></div>
+      <div class="cell changed"><div class="l">Chance of any loss</div><div class="v">99.99% → <span id="u2p">0.16%</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="beat" id="beat3">
+  <div class="beat-head">
+    <span class="k">3 · The distribution</span>
+    <h2>Same expected loss. Very different incident logs.</h2>
+    <p>Simulate one thousand of these outages under each placement and watch where the losses land.</p>
+  </div>
+  <div class="lab">
+    <div class="bar">
+      <span id="runlabel" class="num" style="color:var(--ink-2)">0 outages simulated</span>
+      <div class="spacer"></div>
+      <button class="primary" id="run1000">Run 1,000 outages</button>
+    </div>
+    <div class="timeline">
+      <div class="panel">
+        <div class="ph"><span class="t random">Random placement</span><span class="c" id="inc-r">–</span></div>
+        <canvas id="t1" width="440" height="220" aria-label="Chunks lost per outage, random placement"></canvas>
+      </div>
+      <div class="panel">
+        <div class="ph"><span class="t copy">Copysets</span><span class="c" id="inc-c">–</span></div>
+        <canvas id="t2" width="440" height="220" aria-label="Chunks lost per outage, copysets"></canvas>
+      </div>
+    </div>
+    <div class="totals">
+      <div class="stat"><div class="l">Total chunks lost · random</div><div class="v random num" id="tot-r">–</div><div class="sub" id="exp-r">expected over these outages: –</div></div>
+      <div class="stat"><div class="l">Total chunks lost · copysets</div><div class="v copy num" id="tot-c">–</div><div class="sub" id="exp-c">expected over these outages: –</div></div>
+    </div>
+  </div>
+  <div class="reveal" id="r3" hidden>
+    <div class="callout"><strong>Read the two charts.</strong> Random placement loses a little data in almost every outage. Copysets lose nothing in almost every outage, and when they do lose, they lose a whole group at once, about <span class="num">6,000</span> chunks. The expected totals are the same. The copysets total takes far longer to settle on that expectation, because it arrives in rare lumps. A year of operations may not look like the mean at all.</div>
+    <div class="choose">
+      <h3>Both clusters have the same expected loss. Which one would you rather run?</h3>
+      <div class="btns"><button class="choice" id="pick-r">Random: small losses, almost every outage</button><button class="choice" id="pick-c">Copysets: no loss for years, then a big one</button></div>
+    </div>
+    <div class="verdict" id="verdict" hidden>
+      <div class="callout" id="verdict-text"></div>
+      <div class="callout copy"><strong>The paper's argument.</strong> Every data-loss incident carries a fixed cost: a page, an investigation, customer notices, a restore from cold backup. Losing 6,000 chunks in one incident costs little more than losing 9, because you run the same playbook either way. So the number that matters operationally is the probability of an incident, and copysets cut it by roughly <span class="num">600×</span> at no cost in storage or replication.</div>
+      <div class="callout lost"><strong>Where it flips.</strong> If your cost is proportional to bytes lost, with no fixed cost per incident, the two clusters are equivalent and the argument evaporates. Expected loss is not the wrong metric. It's the wrong metric on its own. Reliability is a distribution, and you need to know which shape your cost function punishes.</div>
+    </div>
+  </div>
+</section>
+
+<section class="beat" id="anycluster">
+  <div class="beat-head">
+    <span class="k">4 · Any cluster</span>
+    <h2>Does it hold at your size?</h2>
+    <p>Exact closed forms. The effect grows as the outage gets smaller relative to the cluster and shrinks as it gets larger.</p>
+  </div>
+  <div class="sandbox">
+    <div class="ctl">
+      <label><span class="row"><span>Nodes</span><b id="sbNv">5,001</b></span><input type="range" id="sbN" min="0" max="100" value="43"></label>
+      <label><span class="row"><span>Nodes failing at once</span><b id="sbFv">1.0%</b></span><input type="range" id="sbF" min="1" max="50" value="10"></label>
+      <label><span class="row"><span>Chunks</span><b id="sbMv">10,000,000</b></span><input type="range" id="sbM" min="0" max="100" value="50"></label>
+    </div>
+    <div class="out">
+      <div class="cell"><div class="l">Chance of any loss · random</div><div class="v random" id="sbPr">–</div><div class="sub" id="sbTr">triples in use: –</div></div>
+      <div class="cell"><div class="l">Chance of any loss · copysets</div><div class="v copy" id="sbPc">–</div><div class="sub" id="sbTc">groups: –</div></div>
+      <div class="cell"><div class="l">Expected chunks lost · both</div><div class="v" id="sbE">–</div><div class="sub">per outage</div></div>
+      <div class="cell"><div class="l">Incident size when copysets lose</div><div class="v copy" id="sbS">–</div><div class="sub">chunks, one whole group</div></div>
+      <div class="cell"><div class="l">Incident probability ratio</div><div class="v" id="sbR">–</div><div class="sub">random ÷ copysets</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="caveats">
+  <div class="wrap-inner">
+    <h2>What this leaves out, on purpose</h2>
+    <ul>
+      <li><strong>Scatter width.</strong> Fixed groups of three are the extreme case. A dead node in such a group can only be rebuilt from two peers, which is slow. Real copyset designs let each node share groups with about ten others, trading a little incident probability for recovery speed. The shape of the result is the same.</li>
+      <li><strong>The failure model.</strong> One percent of nodes chosen at random, dying together before anything can be re-replicated. Correlated failures within a rack or power domain are a different problem, handled by failure-domain-aware placement.</li>
+      <li><strong>Simulation honesty.</strong> Probabilities and expectations are exact closed forms. The outages you watch are sampled from the exact loss distribution rather than from ten million stored placements, so the page stays small and fast.</li>
+    </ul>
+    <p class="credit">The mechanism is from <em>Copysets: Reducing the Frequency of Data Loss in Cloud Storage</em>, Cidon, Rumble, Stutsman, Katti, Ousterhout and Rosenblum, USENIX ATC 2013. This page exists to make one consequence of that paper felt: two systems with identical expected loss can differ hundreds of times in how often you lose anything.</p>
+  </div>
+</section>
+
+</main>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+(function(){
+"use strict";
+// ---------- model ----------
+const N=5001, R=3, M=10_000_000, F=50, G=Math.floor(N/R);
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function pTriple(F,N){ return F*(F-1)*(F-2)/(N*(N-1)*(N-2)); }
+function pAny(p,k){ return -Math.expm1(k*Math.log1p(-p)); }
+const P=pTriple(F,N), P_RANDOM=pAny(P,M), P_COPY=pAny(P,G), E_LOSS=M*P, GROUP_SIZE=M/G;
+function gauss(){ let u=0,v=0; while(u===0)u=Math.random(); while(v===0)v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+function poisson(l){ if(l<=0)return 0; if(l<40){const L=Math.exp(-l);let k=0,p=1;do{k++;p*=Math.random();}while(p>L);return k-1;} return Math.max(0,Math.round(l+Math.sqrt(l)*gauss())); }
+function binomial(n,p){ const m=n*p; if(m<40) return poisson(m); return Math.max(0,Math.round(m+Math.sqrt(m*(1-p))*gauss())); }
+function sampleFailed(){ // partial Fisher-Yates
+  const idx=new Int32Array(N); for(let i=0;i<N;i++)idx[i]=i;
+  for(let i=0;i<F;i++){ const j=i+Math.floor(Math.random()*(N-i)); const t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+  return idx.subarray(0,F);
+}
+function outageRandom(){ // returns {lost, markedNodes}
+  const failed=sampleFailed(); const lost=binomial(M,P);
+  const marked=new Set(), tris=[];
+  for(let c=0;c<Math.min(lost,400);c++){ // sample the triple of each lost chunk uniformly from failed nodes
+    const a=failed[Math.floor(Math.random()*F)]; let b,d;
+    do{b=failed[Math.floor(Math.random()*F)];}while(b===a);
+    do{d=failed[Math.floor(Math.random()*F)];}while(d===a||d===b);
+    marked.add(a);marked.add(b);marked.add(d);
+  }
+  return {failed,lost,marked,groups:[],tris};
+}
+function outageCopy(){
+  const failed=sampleFailed(); const dead=new Uint8Array(N); for(const f of failed)dead[f]=1;
+  const groups=[]; let lost=0;
+  for(let g=0;g<G;g++){ const a=3*g; if(dead[a]&&dead[a+1]&&dead[a+2]){ groups.push(g); lost+=binomial(M,1/G); } }
+  const marked=new Set(); for(const g of groups){marked.add(3*g);marked.add(3*g+1);marked.add(3*g+2);}
+  return {failed,lost,marked,groups,tris:[]};
+}
+function lostOnlyRandom(){ return binomial(M,P); }
+function lostOnlyCopy(){ // number of dead groups ~ hypergeometric-ish; simulate directly (cheap)
+  const failed=sampleFailed(); const dead=new Uint8Array(N); for(const f of failed)dead[f]=1;
+  let lost=0; for(let g=0;g<G;g++){const a=3*g; if(dead[a]&&dead[a+1]&&dead[a+2]) lost+=binomial(M,1/G);} return lost;
+}
+const fmtInt=n=>n.toLocaleString('en-US');
+const fmtPct=p=>{ if(p>=0.9999)return '99.99%'; if(p>=0.1)return (p*100).toFixed(1)+'%'; if(p>=0.001)return (p*100).toFixed(2)+'%'; if(p>=1e-5)return (p*100).toFixed(4)+'%'; return (p*100).toExponential(1)+'%'; };
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+// ---------- node grid ----------
+class Grid{
+  constructor(canvas){
+    this.cv=canvas; this.ctx=canvas.getContext('2d'); this.W=canvas.width; this.H=canvas.height;
+    this.mode='random'; this.pos=new Float32Array(N*2); this.from=new Float32Array(N*2); this.to=new Float32Array(N*2);
+    this.state=new Uint8Array(N); // 0 ok, 1 dead, 2 lost
+    this.layout('random',this.pos); this.t=1; this.draw();
+  }
+  layout(mode,out){
+    if(mode==='random'){ const cols=91, sx=this.W/cols, rows=Math.ceil(N/cols), sy=this.H/rows;
+      for(let i=0;i<N;i++){ out[2*i]=(i%cols+0.5)*sx; out[2*i+1]=(Math.floor(i/cols)+0.5)*sy; } }
+    else { const cols=60, sx=this.W/cols, rows=Math.ceil(G/cols), sy=this.H/rows, r=3.6;
+      for(let g=0;g<G;g++){ const cx=(g%cols+0.5)*sx, cy=(Math.floor(g/cols)+0.5)*sy;
+        const off=[[0,-r*1.05],[-r*0.95,r*0.55],[r*0.95,r*0.55]];
+        for(let k=0;k<3;k++){ const i=3*g+k; if(i>=N)break; out[2*i]=cx+off[k][0]; out[2*i+1]=cy+off[k][1]; } }
+      for(let i=3*G;i<N;i++){ out[2*i]=this.W-10; out[2*i+1]=this.H-10; } }
+  }
+  setMode(mode){ if(mode===this.mode)return; this.mode=mode; this.from.set(this.pos); this.layout(mode,this.to); this.state.fill(0); this.tris=[]; this.lostGroups=[]; this.t=reduced?1:0; this.animate(); }
+  animate(){ if(this.t>=1){ this.pos.set(this.to); this.draw(); return; } this.t=Math.min(1,this.t+0.04); const e=1-Math.pow(1-this.t,3);
+    for(let i=0;i<N*2;i++) this.pos[i]=this.from[i]+(this.to[i]-this.from[i])*e; this.draw(); requestAnimationFrame(()=>this.animate()); }
+  draw(){
+    const ctx=this.ctx, dead=css('--dead'), lost=css('--lost'), node=css('--node'), copy=css('--copy');
+    ctx.clearRect(0,0,this.W,this.H);
+    if(this.mode==='copy'){ // faint group halos
+      ctx.fillStyle=copy; ctx.globalAlpha=0.22;
+      for(let g=0;g<G;g++){ const i=3*g; const cx=(this.pos[2*i]+this.pos[2*i+2]+this.pos[2*i+4])/3, cy=(this.pos[2*i+1]+this.pos[2*i+3]+this.pos[2*i+5])/3;
+        ctx.beginPath(); ctx.arc(cx,cy,6.2,0,Math.PI*2); ctx.fill(); }
+      ctx.globalAlpha=1;
+    }
+    const r=this.mode==='copy'?2.1:2.6;
+    ctx.fillStyle=node; ctx.beginPath(); for(let i=0;i<N;i++){ if(this.state[i]!==0)continue; ctx.moveTo(this.pos[2*i]+r,this.pos[2*i+1]); ctx.arc(this.pos[2*i],this.pos[2*i+1],r,0,Math.PI*2);} ctx.fill();
+    ctx.fillStyle=dead; ctx.beginPath(); for(let i=0;i<N;i++){ if(this.state[i]!==1)continue; ctx.moveTo(this.pos[2*i]+r+0.6,this.pos[2*i+1]); ctx.arc(this.pos[2*i],this.pos[2*i+1],r+0.6,0,Math.PI*2);} ctx.fill();
+    ctx.fillStyle=lost; ctx.beginPath(); for(let i=0;i<N;i++){ if(this.state[i]!==2)continue; ctx.moveTo(this.pos[2*i]+r+1.8,this.pos[2*i+1]); ctx.arc(this.pos[2*i],this.pos[2*i+1],r+1.8,0,Math.PI*2);} ctx.fill();
+    if(this.tris&&this.tris.length){ ctx.strokeStyle=lost; ctx.lineWidth=0.8; ctx.globalAlpha=0.7;
+      for(const [a,b,d] of this.tris){ ctx.beginPath(); ctx.moveTo(this.pos[2*a],this.pos[2*a+1]); ctx.lineTo(this.pos[2*b],this.pos[2*b+1]); ctx.lineTo(this.pos[2*d],this.pos[2*d+1]); ctx.closePath(); ctx.stroke(); }
+      ctx.globalAlpha=1; }
+    if(this.mode==='copy'){ ctx.strokeStyle=lost; ctx.lineWidth=1.5; for(const g of this.lostGroups||[]){ const i=3*g; const cx=(this.pos[2*i]+this.pos[2*i+2]+this.pos[2*i+4])/3, cy=(this.pos[2*i+1]+this.pos[2*i+3]+this.pos[2*i+5])/3; ctx.beginPath(); ctx.arc(cx,cy,9,0,Math.PI*2); ctx.stroke(); } }
+  }
+  showOutage(o,done,onCount){
+    this.state.fill(0); this.lostGroups=o.groups; this.tris=[]; const order=Array.from(o.failed);
+    if(reduced){ for(const f of order)this.state[f]=1; for(const m of o.marked)this.state[m]=2; this.tris=o.tris; this.draw(); done&&done(); return; }
+    let k=0; const step=()=>{ for(let j=0;j<4&&k<order.length;j++,k++) this.state[order[k]]=1; this.draw(); if(k<order.length) requestAnimationFrame(step); else setTimeout(()=>{ if(!o.tris.length){ for(const m of o.marked)this.state[m]=2; this.draw(); done&&done(); return; }
+      let t=0; const tick=()=>{ const tri=o.tris[t]; for(const n of tri)this.state[n]=2; this.tris.push(tri); t++; onCount&&onCount(t); this.draw(); if(t<o.tris.length) setTimeout(tick, t<12?110:40); else done&&done(); }; tick(); },220); };
+    step();
+  }
+}
+
+// ---------- beat 1 ----------
+const g1=new Grid(document.getElementById('c1'));
+const guess=document.getElementById('guess'), guessv=document.getElementById('guessv');
+guess.addEventListener('input',()=>{guessv.textContent=guess.value+'%'; document.getElementById('fail1').disabled=false; document.getElementById('hint1').hidden=true;});
+function runBeat1(){
+  const btn=document.getElementById('fail1'); btn.disabled=true;
+  const o=outageRandom();
+  document.getElementById('s1lost').textContent='0';
+  g1.showOutage(o,()=>{
+    document.getElementById('s1lost').textContent=fmtInt(o.lost);
+    document.getElementById('s1p').textContent=fmtPct(P_RANDOM);
+    document.getElementById('s1guess').textContent=guess.value+'%';
+    document.getElementById('s1lostsub').textContent=o.lost>0?`of 10,000,000 · their copies sat on the ${o.marked.size} red nodes`:'of 10,000,000';
+    document.getElementById('r1').hidden=false; btn.disabled=false; btn.textContent='Fail 1% again';
+  }, k=>{ document.getElementById('s1lost').textContent=fmtInt(k); });
+}
+document.getElementById('fail1').addEventListener('click',runBeat1);
+document.getElementById('again1').addEventListener('click',runBeat1);
+
+// ---------- beat 2 ----------
+const g2=new Grid(document.getElementById('c2'));
+let mode2='random', guess2touched=false;
+const guess2=document.getElementById('guess2');
+guess2.addEventListener('input',()=>{document.getElementById('guess2v').textContent=guess2.value+'%'; guess2touched=true; document.getElementById('fail2').disabled=false;});
+document.querySelectorAll('#beat2 .seg button').forEach(b=>b.addEventListener('click',()=>{
+  mode2=b.dataset.mode; document.querySelectorAll('#beat2 .seg button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+  document.getElementById('lg-copy').hidden=mode2!=='copy'; document.getElementById('lg-copy2').hidden=mode2!=='copy'; document.getElementById('lg-rand').hidden=mode2==='copy'; g2.setMode(mode2);
+  document.getElementById('guess2wrap').hidden=mode2!=='copy'; document.getElementById('s2gwrap').hidden=mode2!=='copy';
+  document.getElementById('fail2').disabled=(mode2==='copy'&&!guess2touched);
+  document.getElementById('s2lost').textContent='–'; document.getElementById('s2lostsub').innerHTML='&nbsp;';
+  document.getElementById('s2p').textContent=fmtPct(mode2==='copy'?P_COPY:P_RANDOM);
+  document.getElementById('s2p').className='v num '+(mode2==='copy'?'copy':'random');
+}));
+document.getElementById('fail2').addEventListener('click',()=>{
+  const btn=document.getElementById('fail2'); btn.disabled=true;
+  const o=mode2==='copy'?outageCopy():outageRandom();
+  document.getElementById('s2lost').textContent='0';
+  g2.showOutage(o,()=>{
+    document.getElementById('s2lost').textContent=fmtInt(o.lost);
+    document.getElementById('s2lostsub').textContent=mode2==='copy'?(o.groups.length?`${o.groups.length} whole group${o.groups.length>1?'s':''} gone`:'no group lost all three nodes'):(o.lost>0?`their copies sat on the ${o.marked.size} red nodes`:'no chunk had all three copies on failed nodes');
+    document.getElementById('s2p').textContent=fmtPct(mode2==='copy'?P_COPY:P_RANDOM);
+    document.getElementById('s2p').className='v num '+(mode2==='copy'?'copy':'random');
+    if(mode2==='copy'){ document.getElementById('s2guess').textContent=guess2.value+'%'; document.getElementById('r2').hidden=false; }
+    btn.disabled=false;
+  }, k=>{ document.getElementById('s2lost').textContent=fmtInt(k); });
+});
+document.getElementById('u2p').textContent=fmtPct(P_COPY);
+
+// ---------- beat 3: timeline ----------
+class Timeline{
+  constructor(canvas,color){ this.cv=canvas; this.ctx=canvas.getContext('2d'); this.color=color; this.data=[]; this.padL=44; this.padB=22; this.padT=8; this.padR=6; this.ymax=Math.log10(20000+1); this.draw();
+    canvas.addEventListener('mousemove',e=>this.hover(e)); canvas.addEventListener('mouseleave',()=>tip.hidden=true); }
+  y(v){ const h=this.cv.height-this.padT-this.padB; return this.cv.height-this.padB-Math.log10(v+1)/this.ymax*h; }
+  draw(){
+    const ctx=this.ctx,W=this.cv.width,H=this.cv.height; ctx.clearRect(0,0,W,H);
+    const line=css('--line'), ink3=css('--ink-3'), col=css(this.color);
+    ctx.font='11px "IBM Plex Mono",monospace'; ctx.fillStyle=ink3; ctx.strokeStyle=line; ctx.lineWidth=1;
+    for(const t of [0,1,10,100,1000,10000]){ const y=this.y(t)+0.5; ctx.beginPath(); ctx.moveTo(this.padL,y); ctx.lineTo(W-this.padR,y); ctx.stroke(); ctx.textAlign='right'; ctx.fillText(t>=1000?(t/1000)+'k':String(t),this.padL-6,y+4); }
+    ctx.textAlign='left'; ctx.fillText('chunks lost, per outage (log)',this.padL,H-6);
+    ctx.textAlign='right'; ctx.fillText(this.data.length?`${fmtInt(this.data.length)} outages →`:'outages →',W-this.padR,H-6);
+    const n=Math.max(this.data.length,1000), bw=(W-this.padL-this.padR)/n, base=this.y(0);
+    ctx.fillStyle=col;
+    for(let i=0;i<this.data.length;i++){ const v=this.data[i]; if(v<=0)continue; const x=this.padL+i*bw; ctx.fillRect(x,this.y(v),Math.max(bw,1.2),base-this.y(v)); }
+  }
+  hover(e){ const r=this.cv.getBoundingClientRect(); const x=(e.clientX-r.left)*(this.cv.width/r.width); const n=Math.max(this.data.length,1000); const i=Math.floor((x-this.padL)/((this.cv.width-this.padL-this.padR)/n));
+    if(i<0||i>=this.data.length){tip.hidden=true;return;} tip.textContent=`outage ${i+1}: ${fmtInt(this.data[i])} chunk${this.data[i]===1?'':'s'} lost`; tip.style.left=e.clientX+'px'; tip.style.top=e.clientY+'px'; tip.hidden=false; }
+}
+const tip=document.getElementById('tip');
+const T1=new Timeline(document.getElementById('t1'),'--random'), T2=new Timeline(document.getElementById('t2'),'--copy');
+let totR=0,totC=0,incR=0,incC=0,nRun=0;
+function updateTotals(){
+  document.getElementById('runlabel').textContent=`${fmtInt(nRun)} outages simulated`;
+  document.getElementById('inc-r').textContent=`${fmtInt(incR)} incidents with loss`;
+  document.getElementById('inc-c').textContent=`${fmtInt(incC)} incident${incC===1?'':'s'} with loss`;
+  document.getElementById('tot-r').textContent=fmtInt(totR); document.getElementById('tot-c').textContent=fmtInt(totC);
+  const ex=fmtInt(Math.round(E_LOSS*nRun));
+  document.getElementById('exp-r').textContent=`expected over these outages: ${ex}`; document.getElementById('exp-c').textContent=`expected over these outages: ${ex}`;
+}
+document.getElementById('run1000').addEventListener('click',()=>{
+  const btn=document.getElementById('run1000'); btn.disabled=true; let k=0;
+  const step=()=>{ for(let j=0;j<(reduced?1000:25)&&k<1000;j++,k++){ const a=lostOnlyRandom(), b=lostOnlyCopy(); T1.data.push(a); T2.data.push(b); totR+=a; totC+=b; if(a>0)incR++; if(b>0)incC++; nRun++; }
+    T1.draw(); T2.draw(); updateTotals(); if(k<1000) requestAnimationFrame(step); else { btn.disabled=false; btn.textContent='Run 1,000 more'; document.getElementById('r3').hidden=false; } };
+  step();
+});
+function pick(which){
+  const v=document.getElementById('verdict'), t=document.getElementById('verdict-text');
+  t.innerHTML= which==='r' ? '<strong>You chose the trickle.</strong> Reasonable if every lost chunk costs you the same regardless of when it goes: you get a steady, predictable bleed you can budget for. But every one of those outages is an incident someone has to handle.'
+                            : '<strong>You chose the flood.</strong> Years of silence, then a bad week. The bet is that one large incident costs less than a thousand small ones, which is true when incidents have a fixed cost and false when cost scales with bytes.';
+  v.hidden=false; v.scrollIntoView({behavior:reduced?'auto':'smooth',block:'nearest'});
+}
+document.getElementById('pick-r').addEventListener('click',()=>pick('r'));
+document.getElementById('pick-c').addEventListener('click',()=>pick('c'));
+
+// ---------- sandbox ----------
+const sbN=document.getElementById('sbN'), sbF=document.getElementById('sbF'), sbM=document.getElementById('sbM');
+function sbCalc(){
+  const n=Math.round(Math.pow(10, 2.71+ sbN.value/100*2.3)); // 513 .. 102k; slider at 43 gives 5,001
+  const fp=sbF.value/10; const f=Math.max(3,Math.round(n*fp/100)); const m=Math.round(Math.pow(10, 5+sbM.value/100*4)); // 1e5..1e9
+  const g=Math.floor(n/3), p=pTriple(f,n), pr=pAny(p,m), pc=pAny(p,g), e=m*p;
+  document.getElementById('sbNv').textContent=fmtInt(n); document.getElementById('sbFv').textContent=fp.toFixed(1)+'% ('+fmtInt(f)+' nodes)'; document.getElementById('sbMv').textContent=fmtInt(m);
+  document.getElementById('sbPr').textContent=fmtPct(pr); document.getElementById('sbPc').textContent=fmtPct(pc);
+  document.getElementById('sbE').textContent=e>=100?fmtInt(Math.round(e)):e>=1?e.toFixed(1):e.toFixed(3);
+  document.getElementById('sbS').textContent=fmtInt(Math.round(m/g));
+  const ratio=pr/pc; document.getElementById('sbR').textContent=isFinite(ratio)?(ratio>=10?fmtInt(Math.round(ratio))+'×':ratio.toFixed(1)+'×'):'–';
+  const trip=n*(n-1)*(n-2)/6; document.getElementById('sbTr').textContent=`triples in use: ~${fmtInt(Math.min(m,Math.round(trip)))} of ${trip>=1e12?(trip/1e12).toFixed(1)+' trillion':trip>=1e9?(trip/1e9).toFixed(1)+' billion':fmtInt(Math.round(trip))}`;
+  document.getElementById('sbTc').textContent=`groups: ${fmtInt(g)}`;
+}
+[sbN,sbF,sbM].forEach(s=>s.addEventListener('input',sbCalc)); sbCalc();
+
+// initial numbers
+document.getElementById('s2p').textContent=fmtPct(P_RANDOM); document.getElementById('s2p').className='v num random';
+document.getElementById('s2e').textContent=E_LOSS.toFixed(1);
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{g1.draw();g2.draw();T1.draw();T2.draw();});
+})();
+</script>

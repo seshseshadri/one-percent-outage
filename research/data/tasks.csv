@@ -1,0 +1,501 @@
+instance_id,repo,difficulty,created_at,ps_len,patch_len,test_patch_len,n_files
+astropy__astropy-12907,astropy/astropy,15 min - 1 hour,2022-03-03T15:14:54Z,1246,470,1415,1
+astropy__astropy-13033,astropy/astropy,15 min - 1 hour,2022-03-31T23:28:27Z,2790,1486,910,1
+astropy__astropy-13236,astropy/astropy,15 min - 1 hour,2022-05-09T14:16:30Z,2057,853,3866,1
+astropy__astropy-13398,astropy/astropy,1-4 hours,2022-06-24T15:22:11Z,5323,13884,7533,4
+astropy__astropy-13453,astropy/astropy,15 min - 1 hour,2022-07-14T10:04:40Z,7910,512,1286,1
+astropy__astropy-13579,astropy/astropy,1-4 hours,2022-08-26T15:06:53Z,4822,1023,1330,1
+astropy__astropy-13977,astropy/astropy,15 min - 1 hour,2022-11-01T22:24:58Z,3762,5777,5645,1
+astropy__astropy-14096,astropy/astropy,15 min - 1 hour,2022-12-04T17:06:07Z,982,728,1001,1
+astropy__astropy-14182,astropy/astropy,15 min - 1 hour,2022-12-16T11:13:37Z,1871,2186,1311,1
+astropy__astropy-14309,astropy/astropy,<15 min fix,2023-01-23T22:34:01Z,4910,592,895,1
+astropy__astropy-14365,astropy/astropy,15 min - 1 hour,2023-02-06T19:20:34Z,1339,955,1194,1
+astropy__astropy-14369,astropy/astropy,1-4 hours,2023-02-06T21:56:51Z,2597,12099,1100,2
+astropy__astropy-14508,astropy/astropy,15 min - 1 hour,2023-03-09T11:08:51Z,2629,1517,1236,1
+astropy__astropy-14539,astropy/astropy,15 min - 1 hour,2023-03-16T18:45:19Z,1463,481,3599,1
+astropy__astropy-14598,astropy/astropy,15 min - 1 hour,2023-03-29T10:34:49Z,2651,963,1044,1
+astropy__astropy-14995,astropy/astropy,<15 min fix,2023-06-27T19:48:18Z,2455,869,1900,1
+astropy__astropy-7166,astropy/astropy,<15 min fix,2018-02-07T15:05:31Z,162,1165,822,1
+astropy__astropy-7336,astropy/astropy,<15 min fix,2018-03-28T15:31:32Z,1572,709,11922,1
+astropy__astropy-7606,astropy/astropy,15 min - 1 hour,2018-06-29T16:27:46Z,1052,1062,545,1
+astropy__astropy-7671,astropy/astropy,15 min - 1 hour,2018-07-20T19:37:49Z,1916,910,599,1
+astropy__astropy-8707,astropy/astropy,15 min - 1 hour,2019-05-15T13:21:19Z,840,5131,1407,2
+astropy__astropy-8872,astropy/astropy,15 min - 1 hour,2019-06-19T20:34:56Z,887,1674,963,1
+django__django-10097,django/django,<15 min fix,2018-06-26T23:30:51Z,2656,562,1261,1
+django__django-10554,django/django,1-4 hours,2018-10-24T14:24:45Z,2909,1554,1795,2
+django__django-10880,django/django,<15 min fix,2019-01-21T00:22:36Z,278,609,994,1
+django__django-10914,django/django,<15 min fix,2019-01-30T13:13:20Z,1021,582,591,1
+django__django-10973,django/django,15 min - 1 hour,2019-02-11T01:19:56Z,357,2434,4184,1
+django__django-10999,django/django,<15 min fix,2019-02-16T07:44:50Z,616,520,943,1
+django__django-11066,django/django,<15 min fix,2019-03-09T13:03:14Z,1867,746,2136,1
+django__django-11087,django/django,15 min - 1 hour,2019-03-16T22:59:57Z,9252,3186,2661,1
+django__django-11095,django/django,15 min - 1 hour,2019-03-19T15:17:28Z,381,945,1594,1
+django__django-11099,django/django,<15 min fix,2019-03-20T03:46:18Z,764,808,989,1
+django__django-11119,django/django,<15 min fix,2019-03-24T21:17:05Z,369,492,555,1
+django__django-11133,django/django,<15 min fix,2019-03-27T06:48:09Z,895,581,552,1
+django__django-11138,django/django,1-4 hours,2019-03-28T13:11:56Z,3135,7548,4013,4
+django__django-11141,django/django,15 min - 1 hour,2019-03-28T20:49:53Z,829,1519,1504,1
+django__django-11149,django/django,15 min - 1 hour,2019-03-30T18:14:35Z,783,4267,5333,1
+django__django-11163,django/django,<15 min fix,2019-04-02T21:46:42Z,408,534,814,1
+django__django-11179,django/django,<15 min fix,2019-04-05T15:54:39Z,283,579,986,1
+django__django-11206,django/django,15 min - 1 hour,2019-04-13T10:19:38Z,698,831,599,1
+django__django-11211,django/django,15 min - 1 hour,2019-04-13T12:01:14Z,959,527,2633,1
+django__django-11239,django/django,<15 min fix,2019-04-16T09:44:54Z,1056,1270,3029,1
+django__django-11265,django/django,15 min - 1 hour,2019-04-21T12:57:28Z,3810,1668,674,1
+django__django-11276,django/django,15 min - 1 hour,2019-04-24T12:35:05Z,1120,2760,19182,1
+django__django-11292,django/django,15 min - 1 hour,2019-04-27T14:23:07Z,401,1713,802,1
+django__django-11299,django/django,<15 min fix,2019-04-28T11:15:08Z,3040,666,2870,1
+django__django-11333,django/django,15 min - 1 hour,2019-05-06T21:00:53Z,1493,1236,1109,2
+django__django-11400,django/django,1-4 hours,2019-05-22T11:30:39Z,799,3224,6720,3
+django__django-11433,django/django,<15 min fix,2019-05-31T17:06:20Z,586,946,1430,1
+django__django-11451,django/django,<15 min fix,2019-06-08T19:11:42Z,2067,575,1039,1
+django__django-11477,django/django,15 min - 1 hour,2019-06-14T17:40:45Z,225,610,3941,1
+django__django-11490,django/django,<15 min fix,2019-06-19T07:47:46Z,457,675,689,1
+django__django-11532,django/django,15 min - 1 hour,2019-07-02T10:29:28Z,2666,4525,1231,5
+django__django-11551,django/django,15 min - 1 hour,2019-07-09T22:28:45Z,5413,2499,1382,1
+django__django-11555,django/django,<15 min fix,2019-07-10T18:07:07Z,748,630,1852,1
+django__django-11603,django/django,<15 min fix,2019-07-28T18:14:23Z,396,584,1230,1
+django__django-11728,django/django,15 min - 1 hour,2019-08-29T17:31:03Z,499,3304,929,1
+django__django-11734,django/django,15 min - 1 hour,2019-09-01T18:46:50Z,832,2077,1810,3
+django__django-11740,django/django,15 min - 1 hour,2019-09-03T10:44:38Z,1973,1777,1599,1
+django__django-11749,django/django,15 min - 1 hour,2019-09-05T21:47:44Z,1249,1022,1800,1
+django__django-11790,django/django,15 min - 1 hour,2019-09-17T14:33:44Z,465,806,1027,1
+django__django-11815,django/django,15 min - 1 hour,2019-09-24T21:45:36Z,1601,739,4548,1
+django__django-11820,django/django,<15 min fix,2019-09-26T08:37:14Z,343,919,1686,1
+django__django-11848,django/django,15 min - 1 hour,2019-09-28T04:28:22Z,626,869,2236,1
+django__django-11880,django/django,<15 min fix,2019-10-07T19:10:59Z,1078,427,902,1
+django__django-11885,django/django,1-4 hours,2019-10-08T15:22:07Z,1296,10818,707,2
+django__django-11951,django/django,<15 min fix,2019-10-21T09:35:46Z,609,901,1029,1
+django__django-11964,django/django,<15 min fix,2019-10-23T14:16:45Z,2353,559,605,1
+django__django-11999,django/django,15 min - 1 hour,2019-10-31T10:39:18Z,512,870,730,1
+django__django-12039,django/django,15 min - 1 hour,2019-11-06T21:14:34Z,1245,1268,2267,1
+django__django-12050,django/django,15 min - 1 hour,2019-11-10T08:53:45Z,347,1412,630,1
+django__django-12125,django/django,<15 min fix,2019-11-22T12:55:45Z,1589,546,2076,1
+django__django-12143,django/django,15 min - 1 hour,2019-11-25T14:38:30Z,1437,745,1508,1
+django__django-12155,django/django,15 min - 1 hour,2019-11-28T16:24:23Z,777,2268,2107,2
+django__django-12193,django/django,<15 min fix,2019-12-08T01:38:25Z,773,525,1521,1
+django__django-12209,django/django,<15 min fix,2019-12-12T04:11:05Z,1200,464,1621,1
+django__django-12262,django/django,15 min - 1 hour,2019-12-30T13:13:59Z,1030,680,4224,1
+django__django-12273,django/django,15 min - 1 hour,2020-01-03T18:47:56Z,926,563,2313,1
+django__django-12276,django/django,<15 min fix,2020-01-05T08:04:40Z,604,839,3063,1
+django__django-12304,django/django,<15 min fix,2020-01-09T15:43:51Z,580,510,859,1
+django__django-12308,django/django,<15 min fix,2020-01-12T04:21:15Z,459,684,1230,1
+django__django-12325,django/django,1-4 hours,2020-01-15T14:02:25Z,900,1614,3809,2
+django__django-12406,django/django,15 min - 1 hour,2020-02-02T16:34:05Z,1066,2165,3151,2
+django__django-12419,django/django,<15 min fix,2020-02-05T10:02:56Z,680,399,542,1
+django__django-12663,django/django,15 min - 1 hour,2020-04-04T18:58:49Z,2854,580,2104,1
+django__django-12708,django/django,1-4 hours,2020-04-12T22:20:59Z,959,850,3447,1
+django__django-12713,django/django,15 min - 1 hour,2020-04-13T23:57:12Z,257,1986,1690,1
+django__django-12741,django/django,<15 min fix,2020-04-17T22:35:55Z,398,1527,1036,2
+django__django-12754,django/django,15 min - 1 hour,2020-04-19T10:59:30Z,860,1377,1549,1
+django__django-12774,django/django,15 min - 1 hour,2020-04-22T11:02:30Z,1094,947,3111,1
+django__django-12858,django/django,15 min - 1 hour,2020-05-05T04:49:02Z,794,690,723,1
+django__django-12965,django/django,15 min - 1 hour,2020-05-24T13:20:03Z,2275,523,556,1
+django__django-13012,django/django,15 min - 1 hour,2020-06-02T21:19:37Z,1414,510,767,1
+django__django-13023,django/django,<15 min fix,2020-06-04T20:40:44Z,522,582,1232,1
+django__django-13028,django/django,15 min - 1 hour,2020-06-05T19:49:04Z,2839,693,2155,1
+django__django-13033,django/django,15 min - 1 hour,2020-06-07T14:52:19Z,3732,970,1384,1
+django__django-13089,django/django,<15 min fix,2020-06-20T07:36:10Z,1578,869,971,1
+django__django-13109,django/django,<15 min fix,2020-06-25T08:36:45Z,1922,612,4015,1
+django__django-13112,django/django,<15 min fix,2020-06-26T04:51:38Z,1944,884,1331,1
+django__django-13121,django/django,15 min - 1 hour,2020-06-29T09:04:15Z,1189,6564,1443,4
+django__django-13128,django/django,1-4 hours,2020-06-30T18:06:56Z,422,3354,5655,1
+django__django-13158,django/django,15 min - 1 hour,2020-07-06T19:18:11Z,1176,961,772,1
+django__django-13195,django/django,15 min - 1 hour,2020-07-15T11:00:07Z,2402,2611,3317,3
+django__django-13212,django/django,1-4 hours,2020-07-21T02:53:58Z,468,7779,5326,2
+django__django-13279,django/django,15 min - 1 hour,2020-08-07T05:15:16Z,432,1278,2230,1
+django__django-13297,django/django,<15 min fix,2020-08-12T11:20:33Z,1384,1114,1989,1
+django__django-13315,django/django,15 min - 1 hour,2020-08-17T04:24:39Z,285,1186,3662,1
+django__django-13343,django/django,15 min - 1 hour,2020-08-24T19:29:12Z,1260,980,1150,1
+django__django-13344,django/django,1-4 hours,2020-08-24T20:50:35Z,1361,5088,7843,3
+django__django-13346,django/django,15 min - 1 hour,2020-08-25T06:25:31Z,620,1839,1510,1
+django__django-13363,django/django,<15 min fix,2020-08-29T18:59:41Z,1676,1025,1752,1
+django__django-13401,django/django,15 min - 1 hour,2020-09-09T11:19:00Z,1234,2030,1703,1
+django__django-13406,django/django,<15 min fix,2020-09-10T12:38:11Z,3084,359,1820,1
+django__django-13410,django/django,<15 min fix,2020-09-11T09:58:41Z,1242,651,1453,1
+django__django-13417,django/django,<15 min fix,2020-09-14T07:49:15Z,940,654,813,1
+django__django-13449,django/django,1-4 hours,2020-09-22T13:04:03Z,6278,1290,2808,1
+django__django-13512,django/django,<15 min fix,2020-10-08T13:52:57Z,462,1256,1284,2
+django__django-13513,django/django,15 min - 1 hour,2020-10-08T14:07:33Z,1158,3686,1653,1
+django__django-13516,django/django,15 min - 1 hour,2020-10-08T19:00:01Z,619,476,1163,1
+django__django-13551,django/django,<15 min fix,2020-10-17T17:22:01Z,603,1557,3966,1
+django__django-13568,django/django,15 min - 1 hour,2020-10-19T15:20:08Z,765,672,3072,1
+django__django-13569,django/django,15 min - 1 hour,2020-10-19T21:20:55Z,1983,519,1035,1
+django__django-13590,django/django,15 min - 1 hour,2020-10-23T09:34:55Z,859,823,1677,1
+django__django-13658,django/django,15 min - 1 hour,2020-11-09T20:50:28Z,1237,854,1582,1
+django__django-13670,django/django,15 min - 1 hour,2020-11-12T11:45:51Z,767,476,746,1
+django__django-13741,django/django,<15 min fix,2020-12-02T10:52:52Z,1020,1209,399,1
+django__django-13786,django/django,15 min - 1 hour,2020-12-17T21:10:10Z,740,935,1613,1
+django__django-13794,django/django,<15 min fix,2020-12-19T20:09:34Z,307,610,1741,1
+django__django-13807,django/django,<15 min fix,2020-12-23T21:09:32Z,1501,1917,1607,1
+django__django-13809,django/django,15 min - 1 hour,2020-12-24T15:31:35Z,457,1222,2039,1
+django__django-13810,django/django,15 min - 1 hour,2020-12-26T12:31:18Z,2259,1176,1244,1
+django__django-13820,django/django,15 min - 1 hour,2020-12-28T22:07:57Z,2102,1408,1874,1
+django__django-13821,django/django,<15 min fix,2020-12-29T15:16:10Z,538,623,810,1
+django__django-13837,django/django,1-4 hours,2021-01-04T17:44:23Z,1643,1037,1999,1
+django__django-13925,django/django,15 min - 1 hour,2021-01-21T08:08:55Z,4086,630,3131,1
+django__django-13933,django/django,<15 min fix,2021-01-26T03:58:23Z,1207,687,906,1
+django__django-13964,django/django,15 min - 1 hour,2021-02-02T17:07:43Z,1870,696,2297,1
+django__django-14007,django/django,1-4 hours,2021-02-13T09:00:02Z,1214,2029,2643,1
+django__django-14011,django/django,1-4 hours,2021-02-15T06:15:21Z,1907,2233,5803,2
+django__django-14017,django/django,15 min - 1 hour,2021-02-18T13:05:27Z,1269,624,1241,1
+django__django-14034,django/django,15 min - 1 hour,2021-02-22T19:32:50Z,1131,1576,1503,1
+django__django-14053,django/django,15 min - 1 hour,2021-02-25T23:57:27Z,3108,2122,731,1
+django__django-14089,django/django,<15 min fix,2021-03-06T20:51:08Z,318,391,702,1
+django__django-14122,django/django,15 min - 1 hour,2021-03-13T19:57:16Z,463,1126,1223,1
+django__django-14140,django/django,15 min - 1 hour,2021-03-17T11:37:55Z,1152,1026,3838,1
+django__django-14155,django/django,15 min - 1 hour,2021-03-19T15:44:25Z,553,949,1628,1
+django__django-14170,django/django,15 min - 1 hour,2021-03-23T08:53:41Z,1739,3448,2024,2
+django__django-14238,django/django,15 min - 1 hour,2021-04-08T10:41:31Z,2590,627,1920,1
+django__django-14311,django/django,15 min - 1 hour,2021-04-25T02:54:34Z,605,947,1277,1
+django__django-14315,django/django,<15 min fix,2021-04-26T12:39:01Z,489,1077,1855,2
+django__django-14349,django/django,15 min - 1 hour,2021-05-04T20:10:27Z,2383,926,1174,1
+django__django-14351,django/django,15 min - 1 hour,2021-05-05T03:50:44Z,8541,770,744,1
+django__django-14373,django/django,<15 min fix,2021-05-10T14:40:32Z,220,476,862,1
+django__django-14376,django/django,<15 min fix,2021-05-10T20:42:18Z,782,1845,2915,2
+django__django-14404,django/django,<15 min fix,2021-05-17T11:24:06Z,304,917,1843,1
+django__django-14434,django/django,15 min - 1 hour,2021-05-23T12:27:14Z,190,1423,1289,1
+django__django-14493,django/django,<15 min fix,2021-06-05T12:50:25Z,1456,530,1385,1
+django__django-14500,django/django,15 min - 1 hour,2021-06-08T05:08:08Z,292,1017,1219,1
+django__django-14534,django/django,<15 min fix,2021-06-17T15:37:34Z,1640,386,1610,1
+django__django-14539,django/django,<15 min fix,2021-06-19T11:31:16Z,353,749,701,1
+django__django-14559,django/django,15 min - 1 hour,2021-06-26T05:38:46Z,476,1349,1357,1
+django__django-14580,django/django,<15 min fix,2021-07-01T07:38:03Z,1576,535,693,1
+django__django-14608,django/django,<15 min fix,2021-07-07T19:51:30Z,605,881,2562,1
+django__django-14631,django/django,1-4 hours,2021-07-13T09:16:48Z,1399,5201,2421,2
+django__django-14672,django/django,15 min - 1 hour,2021-07-20T10:47:34Z,6760,511,3427,1
+django__django-14725,django/django,15 min - 1 hour,2021-08-01T21:24:36Z,378,2530,3290,1
+django__django-14752,django/django,<15 min fix,2021-08-07T16:34:32Z,2847,1465,1637,1
+django__django-14765,django/django,<15 min fix,2021-08-12T05:59:11Z,558,787,478,1
+django__django-14771,django/django,15 min - 1 hour,2021-08-15T07:26:17Z,994,693,3292,1
+django__django-14787,django/django,<15 min fix,2021-08-23T12:59:59Z,745,685,1050,1
+django__django-14792,django/django,<15 min fix,2021-08-24T09:25:15Z,1514,486,1638,1
+django__django-14855,django/django,<15 min fix,2021-09-14T01:27:01Z,1011,687,2805,1
+django__django-14915,django/django,<15 min fix,2021-09-29T22:00:15Z,1007,416,1221,1
+django__django-14999,django/django,<15 min fix,2021-10-16T09:31:21Z,262,1226,1674,1
+django__django-15022,django/django,15 min - 1 hour,2021-10-24T17:48:28Z,1224,1106,3534,1
+django__django-15037,django/django,15 min - 1 hour,2021-10-30T15:21:38Z,502,1403,1441,1
+django__django-15098,django/django,15 min - 1 hour,2021-11-17T21:30:07Z,2598,403,2504,1
+django__django-15103,django/django,15 min - 1 hour,2021-11-19T15:57:54Z,378,1606,1296,2
+django__django-15104,django/django,<15 min fix,2021-11-19T20:46:58Z,4594,590,1326,1
+django__django-15127,django/django,<15 min fix,2021-11-25T13:14:38Z,306,732,3138,1
+django__django-15128,django/django,1-4 hours,2021-11-25T15:50:24Z,2662,3798,2972,1
+django__django-15161,django/django,15 min - 1 hour,2021-12-06T09:06:13Z,504,1795,2701,1
+django__django-15252,django/django,15 min - 1 hour,2021-12-28T15:51:06Z,1681,850,4447,1
+django__django-15268,django/django,1-4 hours,2022-01-01T09:57:13Z,1305,1228,3414,1
+django__django-15277,django/django,<15 min fix,2022-01-03T12:14:06Z,2748,653,1235,1
+django__django-15278,django/django,15 min - 1 hour,2022-01-03T20:01:32Z,1222,1128,951,1
+django__django-15280,django/django,15 min - 1 hour,2022-01-04T11:16:35Z,2509,929,1514,1
+django__django-15315,django/django,<15 min fix,2022-01-13T18:51:58Z,793,665,871,1
+django__django-15368,django/django,<15 min fix,2022-01-27T13:44:35Z,1180,1214,858,1
+django__django-15375,django/django,15 min - 1 hour,2022-01-28T14:48:03Z,1613,733,962,1
+django__django-15380,django/django,<15 min fix,2022-01-31T19:44:44Z,1608,827,1319,1
+django__django-15382,django/django,15 min - 1 hour,2022-02-01T18:29:41Z,407,959,545,1
+django__django-15467,django/django,<15 min fix,2022-02-27T03:00:31Z,727,702,1000,1
+django__django-15499,django/django,<15 min fix,2022-03-10T22:32:35Z,263,906,1139,1
+django__django-15503,django/django,1-4 hours,2022-03-12T06:22:37Z,1797,3313,1545,1
+django__django-15525,django/django,15 min - 1 hour,2022-03-18T10:39:26Z,4379,640,3254,1
+django__django-15554,django/django,15 min - 1 hour,2022-03-29T10:12:46Z,1278,4891,1401,1
+django__django-15561,django/django,15 min - 1 hour,2022-04-01T18:29:04Z,359,2007,1152,2
+django__django-15563,django/django,15 min - 1 hour,2022-04-06T02:48:01Z,1727,2588,899,2
+django__django-15569,django/django,<15 min fix,2022-04-08T06:55:17Z,640,481,2662,1
+django__django-15572,django/django,<15 min fix,2022-04-09T09:38:31Z,1388,855,742,1
+django__django-15629,django/django,1-4 hours,2022-04-23T21:58:24Z,2395,5128,6409,4
+django__django-15695,django/django,15 min - 1 hour,2022-05-16T07:58:51Z,1259,737,903,1
+django__django-15731,django/django,15 min - 1 hour,2022-05-24T12:30:05Z,1179,775,939,1
+django__django-15732,django/django,15 min - 1 hour,2022-05-24T12:58:31Z,599,2829,3349,1
+django__django-15741,django/django,<15 min fix,2022-05-28T09:52:42Z,365,458,1229,1
+django__django-15814,django/django,15 min - 1 hour,2022-07-03T19:10:56Z,2646,598,700,1
+django__django-15851,django/django,<15 min fix,2022-07-18T01:36:33Z,632,514,540,1
+django__django-15863,django/django,<15 min fix,2022-07-20T12:58:04Z,838,427,808,1
+django__django-15916,django/django,15 min - 1 hour,2022-08-04T18:59:18Z,1744,1709,1569,1
+django__django-15930,django/django,<15 min fix,2022-08-07T15:26:41Z,689,857,902,1
+django__django-15957,django/django,1-4 hours,2022-08-13T06:18:25Z,854,3039,2870,1
+django__django-15973,django/django,15 min - 1 hour,2022-08-19T18:10:02Z,5339,633,2498,1
+django__django-15987,django/django,<15 min fix,2022-08-23T10:07:03Z,176,697,1182,1
+django__django-16032,django/django,15 min - 1 hour,2022-09-06T09:54:57Z,778,2191,1445,2
+django__django-16082,django/django,15 min - 1 hour,2022-09-21T18:49:40Z,308,356,706,1
+django__django-16100,django/django,<15 min fix,2022-09-24T13:32:02Z,281,1677,3201,1
+django__django-16116,django/django,<15 min fix,2022-09-25T23:54:49Z,758,1265,773,1
+django__django-16136,django/django,15 min - 1 hour,2022-09-29T11:47:50Z,2087,753,1590,1
+django__django-16139,django/django,<15 min fix,2022-09-30T08:51:16Z,1413,697,1865,1
+django__django-16145,django/django,<15 min fix,2022-10-03T05:09:14Z,589,1156,1011,1
+django__django-16255,django/django,<15 min fix,2022-11-04T13:49:40Z,1566,539,2292,1
+django__django-16256,django/django,15 min - 1 hour,2022-11-04T14:26:44Z,2110,5054,5401,2
+django__django-16263,django/django,1-4 hours,2022-11-06T07:38:18Z,656,9785,2125,4
+django__django-16315,django/django,15 min - 1 hour,2022-11-22T09:44:54Z,1298,2319,2176,2
+django__django-16333,django/django,<15 min fix,2022-11-27T20:09:15Z,557,397,1420,1
+django__django-16429,django/django,<15 min fix,2023-01-05T11:41:37Z,964,359,1339,1
+django__django-16454,django/django,15 min - 1 hour,2023-01-15T09:23:24Z,2039,857,1990,1
+django__django-16485,django/django,15 min - 1 hour,2023-01-18T22:03:52Z,246,449,591,1
+django__django-16493,django/django,15 min - 1 hour,2023-01-20T18:29:25Z,1141,692,2210,1
+django__django-16502,django/django,15 min - 1 hour,2023-01-26T09:21:31Z,1676,2176,3506,1
+django__django-16527,django/django,15 min - 1 hour,2023-02-05T22:05:00Z,493,581,2633,1
+django__django-16560,django/django,1-4 hours,2023-02-16T10:45:56Z,840,10743,11164,2
+django__django-16569,django/django,<15 min fix,2023-02-17T20:11:38Z,1740,647,567,1
+django__django-16595,django/django,<15 min fix,2023-02-24T10:30:35Z,1540,712,2160,1
+django__django-16612,django/django,15 min - 1 hour,2023-03-02T19:06:12Z,723,630,4140,1
+django__django-16631,django/django,1-4 hours,2023-03-06T15:19:52Z,824,2723,1622,2
+django__django-16642,django/django,<15 min fix,2023-03-11T07:38:47Z,261,632,619,1
+django__django-16661,django/django,15 min - 1 hour,2023-03-18T09:26:58Z,1315,1152,1549,1
+django__django-16662,django/django,15 min - 1 hour,2023-03-18T18:07:18Z,740,765,971,1
+django__django-16667,django/django,15 min - 1 hour,2023-03-20T21:32:53Z,1758,529,2112,1
+django__django-16801,django/django,<15 min fix,2023-04-26T07:23:56Z,724,1451,952,1
+django__django-16819,django/django,15 min - 1 hour,2023-05-01T15:20:04Z,146,641,696,1
+django__django-16877,django/django,15 min - 1 hour,2023-05-19T23:11:10Z,435,628,2195,1
+django__django-16899,django/django,<15 min fix,2023-05-26T13:41:37Z,784,875,1379,1
+django__django-16901,django/django,15 min - 1 hour,2023-05-30T05:08:34Z,1014,1316,985,1
+django__django-16938,django/django,15 min - 1 hour,2023-06-03T11:18:11Z,4015,1354,5322,2
+django__django-16950,django/django,15 min - 1 hour,2023-06-06T19:58:48Z,1443,824,1676,1
+django__django-17029,django/django,<15 min fix,2023-06-29T13:18:26Z,878,426,834,1
+django__django-17084,django/django,15 min - 1 hour,2023-07-17T16:54:19Z,648,1421,1381,1
+django__django-17087,django/django,<15 min fix,2023-07-17T20:28:41Z,1135,555,974,1
+django__django-7530,django/django,15 min - 1 hour,2016-11-08T17:27:19Z,481,754,1801,1
+django__django-9296,django/django,<15 min fix,2017-10-27T11:10:04Z,411,523,668,1
+matplotlib__matplotlib-13989,matplotlib/matplotlib,<15 min fix,2019-04-19T01:47:57Z,1714,505,495,1
+matplotlib__matplotlib-14623,matplotlib/matplotlib,15 min - 1 hour,2019-06-25T14:01:17Z,1117,3862,523,3
+matplotlib__matplotlib-20488,matplotlib/matplotlib,15 min - 1 hour,2021-06-23T03:05:05Z,1952,928,1474,1
+matplotlib__matplotlib-20676,matplotlib/matplotlib,<15 min fix,2021-07-19T10:10:07Z,1645,838,1432,1
+matplotlib__matplotlib-20826,matplotlib/matplotlib,15 min - 1 hour,2021-08-11T06:23:50Z,2496,774,798,1
+matplotlib__matplotlib-20859,matplotlib/matplotlib,<15 min fix,2021-08-19T09:03:04Z,2582,979,665,1
+matplotlib__matplotlib-21568,matplotlib/matplotlib,15 min - 1 hour,2021-11-08T18:41:08Z,1297,743,2599,1
+matplotlib__matplotlib-22719,matplotlib/matplotlib,<15 min fix,2022-03-28T14:42:28Z,10176,1122,637,1
+matplotlib__matplotlib-22865,matplotlib/matplotlib,15 min - 1 hour,2022-04-20T15:15:11Z,1515,844,1444,1
+matplotlib__matplotlib-22871,matplotlib/matplotlib,15 min - 1 hour,2022-04-21T13:10:50Z,1439,722,667,1
+matplotlib__matplotlib-23299,matplotlib/matplotlib,15 min - 1 hour,2022-06-18T01:34:39Z,1780,646,709,1
+matplotlib__matplotlib-23314,matplotlib/matplotlib,15 min - 1 hour,2022-06-21T02:41:34Z,943,421,1284,1
+matplotlib__matplotlib-23412,matplotlib/matplotlib,15 min - 1 hour,2022-07-11T01:41:11Z,1859,654,1959,1
+matplotlib__matplotlib-23476,matplotlib/matplotlib,<15 min fix,2022-07-22T18:58:22Z,3251,519,702,1
+matplotlib__matplotlib-24026,matplotlib/matplotlib,15 min - 1 hour,2022-09-28T02:45:01Z,2133,1615,702,1
+matplotlib__matplotlib-24149,matplotlib/matplotlib,<15 min fix,2022-10-12T22:00:54Z,3224,972,642,1
+matplotlib__matplotlib-24177,matplotlib/matplotlib,<15 min fix,2022-10-15T10:52:31Z,2031,637,3067,1
+matplotlib__matplotlib-24570,matplotlib/matplotlib,<15 min fix,2022-11-30T15:50:17Z,1356,679,2241,1
+matplotlib__matplotlib-24627,matplotlib/matplotlib,15 min - 1 hour,2022-12-05T00:05:54Z,395,627,705,1
+matplotlib__matplotlib-24637,matplotlib/matplotlib,15 min - 1 hour,2022-12-06T03:42:05Z,2257,802,1615,1
+matplotlib__matplotlib-24870,matplotlib/matplotlib,15 min - 1 hour,2023-01-02T20:37:49Z,1150,3653,1212,2
+matplotlib__matplotlib-24970,matplotlib/matplotlib,15 min - 1 hour,2023-01-13T14:23:39Z,1758,1598,679,1
+matplotlib__matplotlib-25122,matplotlib/matplotlib,<15 min fix,2023-02-01T03:41:00Z,1084,1300,2614,1
+matplotlib__matplotlib-25287,matplotlib/matplotlib,<15 min fix,2023-02-22T18:19:27Z,2097,1671,1134,1
+matplotlib__matplotlib-25311,matplotlib/matplotlib,<15 min fix,2023-02-23T21:04:12Z,908,924,1413,1
+matplotlib__matplotlib-25332,matplotlib/matplotlib,<15 min fix,2023-02-26T11:18:40Z,1004,824,928,1
+matplotlib__matplotlib-25479,matplotlib/matplotlib,<15 min fix,2023-03-16T17:59:41Z,5785,1187,1270,2
+matplotlib__matplotlib-25775,matplotlib/matplotlib,15 min - 1 hour,2023-04-26T21:26:46Z,718,5178,2655,3
+matplotlib__matplotlib-25960,matplotlib/matplotlib,15 min - 1 hour,2023-05-23T21:58:53Z,788,2269,1419,1
+matplotlib__matplotlib-26113,matplotlib/matplotlib,<15 min fix,2023-06-12T18:56:33Z,9424,602,1269,1
+matplotlib__matplotlib-26208,matplotlib/matplotlib,<15 min fix,2023-06-28T21:31:50Z,2079,627,863,1
+matplotlib__matplotlib-26291,matplotlib/matplotlib,15 min - 1 hour,2023-07-12T04:29:07Z,3844,583,832,1
+matplotlib__matplotlib-26342,matplotlib/matplotlib,15 min - 1 hour,2023-07-18T10:06:19Z,571,687,1061,1
+matplotlib__matplotlib-26466,matplotlib/matplotlib,15 min - 1 hour,2023-08-07T19:30:22Z,1412,1783,1368,1
+mwaskom__seaborn-3069,mwaskom/seaborn,15 min - 1 hour,2022-10-09T23:31:20Z,1188,2235,1045,1
+mwaskom__seaborn-3187,mwaskom/seaborn,15 min - 1 hour,2022-12-18T00:04:22Z,1438,1531,1199,2
+pallets__flask-5014,pallets/flask,<15 min fix,2023-03-04T18:36:21Z,195,390,465,1
+psf__requests-1142,psf/requests,<15 min fix,2013-01-25T05:19:16Z,381,743,638,1
+psf__requests-1724,psf/requests,<15 min fix,2013-11-04T09:37:00Z,7476,863,602,1
+psf__requests-1766,psf/requests,<15 min fix,2013-11-29T08:38:09Z,897,621,571,1
+psf__requests-1921,psf/requests,<15 min fix,2014-02-14T22:15:56Z,708,388,705,1
+psf__requests-2317,psf/requests,<15 min fix,2014-11-01T02:20:16Z,841,763,466,1
+psf__requests-2931,psf/requests,15 min - 1 hour,2015-12-16T14:57:00Z,271,723,634,1
+psf__requests-5414,psf/requests,<15 min fix,2020-04-05T16:52:04Z,1428,511,516,1
+psf__requests-6028,psf/requests,15 min - 1 hour,2022-01-04T15:32:52Z,1268,454,728,1
+pydata__xarray-2905,pydata/xarray,15 min - 1 hour,2019-04-17T21:52:37Z,2135,529,1131,1
+pydata__xarray-3095,pydata/xarray,15 min - 1 hour,2019-07-11T13:16:16Z,2811,4029,671,2
+pydata__xarray-3151,pydata/xarray,15 min - 1 hour,2019-07-20T12:31:14Z,2326,1331,1254,1
+pydata__xarray-3305,pydata/xarray,15 min - 1 hour,2019-09-12T19:27:14Z,2188,2945,1017,2
+pydata__xarray-3677,pydata/xarray,15 min - 1 hour,2020-01-09T16:07:14Z,1456,422,728,1
+pydata__xarray-3993,pydata/xarray,1-4 hours,2020-04-21T20:30:35Z,919,4058,1002,2
+pydata__xarray-4075,pydata/xarray,<15 min fix,2020-05-18T18:42:05Z,2273,823,1258,1
+pydata__xarray-4094,pydata/xarray,<15 min fix,2020-05-26T00:36:02Z,1604,517,784,1
+pydata__xarray-4356,pydata/xarray,<15 min fix,2020-08-19T23:48:49Z,703,808,1975,1
+pydata__xarray-4629,pydata/xarray,<15 min fix,2020-11-30T23:06:17Z,2659,471,709,1
+pydata__xarray-4687,pydata/xarray,15 min - 1 hour,2020-12-13T20:42:40Z,3990,1539,1342,1
+pydata__xarray-4695,pydata/xarray,15 min - 1 hour,2020-12-15T00:30:04Z,3514,559,801,1
+pydata__xarray-4966,pydata/xarray,15 min - 1 hour,2021-02-26T12:05:51Z,4384,983,1433,1
+pydata__xarray-6461,pydata/xarray,<15 min fix,2022-04-09T03:02:40Z,986,697,571,1
+pydata__xarray-6599,pydata/xarray,15 min - 1 hour,2022-05-12T15:12:41Z,4310,779,628,1
+pydata__xarray-6721,pydata/xarray,15 min - 1 hour,2022-06-24T18:45:45Z,9276,452,634,1
+pydata__xarray-6744,pydata/xarray,15 min - 1 hour,2022-07-02T16:36:00Z,1547,1309,1464,1
+pydata__xarray-6938,pydata/xarray,15 min - 1 hour,2022-08-20T16:45:22Z,2978,3179,664,2
+pydata__xarray-6992,pydata/xarray,>4 hours,2022-09-05T15:07:43Z,1562,8857,6737,2
+pydata__xarray-7229,pydata/xarray,15 min - 1 hour,2022-10-26T21:45:01Z,2824,2032,3090,1
+pydata__xarray-7233,pydata/xarray,15 min - 1 hour,2022-10-27T23:46:49Z,1816,605,5912,1
+pydata__xarray-7393,pydata/xarray,15 min - 1 hour,2022-12-20T04:34:24Z,2362,603,631,1
+pylint-dev__pylint-4551,pylint-dev/pylint,1-4 hours,2021-06-07T15:14:31Z,777,6862,3506,4
+pylint-dev__pylint-4604,pylint-dev/pylint,15 min - 1 hour,2021-06-22T10:44:14Z,685,1098,1233,2
+pylint-dev__pylint-4661,pylint-dev/pylint,15 min - 1 hour,2021-07-03T00:57:06Z,995,1835,633,2
+pylint-dev__pylint-4970,pylint-dev/pylint,<15 min fix,2021-09-05T19:44:07Z,618,520,694,1
+pylint-dev__pylint-6386,pylint-dev/pylint,15 min - 1 hour,2022-04-19T06:34:57Z,739,3027,662,4
+pylint-dev__pylint-6528,pylint-dev/pylint,15 min - 1 hour,2022-05-06T21:03:37Z,2359,3095,5953,2
+pylint-dev__pylint-6903,pylint-dev/pylint,<15 min fix,2022-06-09T19:43:36Z,2662,558,2066,1
+pylint-dev__pylint-7080,pylint-dev/pylint,15 min - 1 hour,2022-06-28T17:24:43Z,24770,417,1267,1
+pylint-dev__pylint-7277,pylint-dev/pylint,<15 min fix,2022-08-08T23:07:49Z,1087,703,992,1
+pylint-dev__pylint-8898,pylint-dev/pylint,1-4 hours,2023-07-29T21:53:59Z,3455,2614,2224,3
+pytest-dev__pytest-10051,pytest-dev/pytest,15 min - 1 hour,2022-06-15T17:39:53Z,1371,1119,1310,1
+pytest-dev__pytest-10081,pytest-dev/pytest,<15 min fix,2022-06-26T13:53:24Z,2905,908,2690,1
+pytest-dev__pytest-10356,pytest-dev/pytest,1-4 hours,2022-10-08T06:20:42Z,5278,2091,763,1
+pytest-dev__pytest-5262,pytest-dev/pytest,<15 min fix,2019-05-14T21:54:55Z,4789,437,418,1
+pytest-dev__pytest-5631,pytest-dev/pytest,15 min - 1 hour,2019-07-19T20:13:12Z,2306,1016,1488,1
+pytest-dev__pytest-5787,pytest-dev/pytest,1-4 hours,2019-08-26T16:43:31Z,3907,9824,26578,1
+pytest-dev__pytest-5809,pytest-dev/pytest,<15 min fix,2019-09-01T04:40:09Z,971,657,571,1
+pytest-dev__pytest-5840,pytest-dev/pytest,15 min - 1 hour,2019-09-12T01:09:28Z,625,3526,3242,2
+pytest-dev__pytest-6197,pytest-dev/pytest,1-4 hours,2019-11-15T16:37:22Z,2749,1868,1677,1
+pytest-dev__pytest-6202,pytest-dev/pytest,<15 min fix,2019-11-16T07:45:21Z,2157,432,1438,1
+pytest-dev__pytest-7205,pytest-dev/pytest,<15 min fix,2020-05-09T11:25:58Z,4267,572,1868,1
+pytest-dev__pytest-7236,pytest-dev/pytest,15 min - 1 hour,2020-05-21T19:53:14Z,2692,1686,1252,1
+pytest-dev__pytest-7324,pytest-dev/pytest,15 min - 1 hour,2020-06-05T13:00:07Z,469,1245,367,1
+pytest-dev__pytest-7432,pytest-dev/pytest,<15 min fix,2020-06-29T21:51:15Z,773,456,1137,1
+pytest-dev__pytest-7490,pytest-dev/pytest,15 min - 1 hour,2020-07-13T22:20:10Z,22778,1711,1453,1
+pytest-dev__pytest-7521,pytest-dev/pytest,<15 min fix,2020-07-20T15:55:11Z,3893,446,543,1
+pytest-dev__pytest-7571,pytest-dev/pytest,15 min - 1 hour,2020-07-29T12:00:47Z,459,1307,1826,1
+pytest-dev__pytest-7982,pytest-dev/pytest,<15 min fix,2020-10-31T12:27:03Z,451,441,944,1
+pytest-dev__pytest-8399,pytest-dev/pytest,15 min - 1 hour,2021-03-04T17:52:17Z,1083,2450,2350,2
+scikit-learn__scikit-learn-10297,scikit-learn/scikit-learn,15 min - 1 hour,2017-12-12T22:07:47Z,1519,3739,2176,1
+scikit-learn__scikit-learn-10844,scikit-learn/scikit-learn,15 min - 1 hour,2018-03-21T00:16:18Z,2399,892,1089,1
+scikit-learn__scikit-learn-10908,scikit-learn/scikit-learn,15 min - 1 hour,2018-04-03T03:50:46Z,2035,525,1677,1
+scikit-learn__scikit-learn-11310,scikit-learn/scikit-learn,<15 min fix,2018-06-18T12:10:19Z,1212,1844,1007,1
+scikit-learn__scikit-learn-11578,scikit-learn/scikit-learn,15 min - 1 hour,2018-07-16T23:21:56Z,7387,575,2805,1
+scikit-learn__scikit-learn-12585,scikit-learn/scikit-learn,<15 min fix,2018-11-14T13:20:30Z,1422,519,604,1
+scikit-learn__scikit-learn-12682,scikit-learn/scikit-learn,15 min - 1 hour,2018-11-27T08:30:51Z,518,13568,2390,2
+scikit-learn__scikit-learn-12973,scikit-learn/scikit-learn,15 min - 1 hour,2019-01-13T16:19:52Z,1575,1465,1734,1
+scikit-learn__scikit-learn-13124,scikit-learn/scikit-learn,15 min - 1 hour,2019-02-09T02:15:23Z,5567,1078,1043,1
+scikit-learn__scikit-learn-13135,scikit-learn/scikit-learn,<15 min fix,2019-02-11T21:34:25Z,5280,674,1612,1
+scikit-learn__scikit-learn-13142,scikit-learn/scikit-learn,<15 min fix,2019-02-12T14:32:37Z,2314,1155,1685,1
+scikit-learn__scikit-learn-13328,scikit-learn/scikit-learn,<15 min fix,2019-02-28T12:47:52Z,4704,603,2908,1
+scikit-learn__scikit-learn-13439,scikit-learn/scikit-learn,<15 min fix,2019-03-12T20:32:50Z,1234,502,394,1
+scikit-learn__scikit-learn-13496,scikit-learn/scikit-learn,<15 min fix,2019-03-23T09:46:59Z,1371,1285,1151,1
+scikit-learn__scikit-learn-13779,scikit-learn/scikit-learn,<15 min fix,2019-05-03T13:24:57Z,589,563,1784,1
+scikit-learn__scikit-learn-14053,scikit-learn/scikit-learn,15 min - 1 hour,2019-06-09T15:36:55Z,3098,558,961,1
+scikit-learn__scikit-learn-14087,scikit-learn/scikit-learn,15 min - 1 hour,2019-06-13T20:09:22Z,2320,1392,1386,1
+scikit-learn__scikit-learn-14141,scikit-learn/scikit-learn,<15 min fix,2019-06-21T20:53:37Z,158,314,426,1
+scikit-learn__scikit-learn-14496,scikit-learn/scikit-learn,<15 min fix,2019-07-28T13:47:05Z,2290,3809,763,1
+scikit-learn__scikit-learn-14629,scikit-learn/scikit-learn,15 min - 1 hour,2019-08-12T09:31:54Z,1814,1658,1099,1
+scikit-learn__scikit-learn-14710,scikit-learn/scikit-learn,15 min - 1 hour,2019-08-21T16:29:47Z,6629,927,943,1
+scikit-learn__scikit-learn-14894,scikit-learn/scikit-learn,15 min - 1 hour,2019-09-05T17:41:11Z,1716,1050,887,1
+scikit-learn__scikit-learn-14983,scikit-learn/scikit-learn,<15 min fix,2019-09-14T15:31:18Z,1297,927,873,1
+scikit-learn__scikit-learn-15100,scikit-learn/scikit-learn,15 min - 1 hour,2019-09-26T19:21:38Z,2134,808,858,1
+scikit-learn__scikit-learn-25102,scikit-learn/scikit-learn,1-4 hours,2022-12-02T20:03:37Z,2534,3888,4254,2
+scikit-learn__scikit-learn-25232,scikit-learn/scikit-learn,<15 min fix,2022-12-24T15:32:44Z,1448,2301,1004,1
+scikit-learn__scikit-learn-25747,scikit-learn/scikit-learn,15 min - 1 hour,2023-03-02T20:38:47Z,6147,746,1656,1
+scikit-learn__scikit-learn-25931,scikit-learn/scikit-learn,15 min - 1 hour,2023-03-22T00:34:47Z,2860,1701,912,1
+scikit-learn__scikit-learn-25973,scikit-learn/scikit-learn,<15 min fix,2023-03-25T13:27:07Z,1968,2410,1543,1
+scikit-learn__scikit-learn-26194,scikit-learn/scikit-learn,15 min - 1 hour,2023-04-17T16:33:08Z,1137,1850,1698,1
+scikit-learn__scikit-learn-26323,scikit-learn/scikit-learn,15 min - 1 hour,2023-05-04T11:55:50Z,2812,771,1362,1
+scikit-learn__scikit-learn-9288,scikit-learn/scikit-learn,15 min - 1 hour,2017-07-06T11:03:14Z,3366,1694,706,1
+sphinx-doc__sphinx-10323,sphinx-doc/sphinx,<15 min fix,2022-04-02T14:42:24Z,3102,728,965,1
+sphinx-doc__sphinx-10435,sphinx-doc/sphinx,<15 min fix,2022-05-08T09:37:06Z,2182,886,642,1
+sphinx-doc__sphinx-10449,sphinx-doc/sphinx,<15 min fix,2022-05-14T14:02:26Z,4478,1798,509,1
+sphinx-doc__sphinx-10466,sphinx-doc/sphinx,15 min - 1 hour,2022-05-22T16:46:53Z,3137,685,1175,1
+sphinx-doc__sphinx-10614,sphinx-doc/sphinx,15 min - 1 hour,2022-06-29T14:29:04Z,3078,1276,8127,1
+sphinx-doc__sphinx-10673,sphinx-doc/sphinx,15 min - 1 hour,2022-07-16T19:29:29Z,1333,5462,1789,3
+sphinx-doc__sphinx-11445,sphinx-doc/sphinx,15 min - 1 hour,2023-05-28T19:15:07Z,1791,1508,3209,1
+sphinx-doc__sphinx-11510,sphinx-doc/sphinx,1-4 hours,2023-07-24T22:46:12Z,5362,2867,2747,1
+sphinx-doc__sphinx-7440,sphinx-doc/sphinx,<15 min fix,2020-04-08T13:46:43Z,905,990,2012,1
+sphinx-doc__sphinx-7454,sphinx-doc/sphinx,<15 min fix,2020-04-09T17:08:30Z,2677,697,1003,1
+sphinx-doc__sphinx-7462,sphinx-doc/sphinx,<15 min fix,2020-04-12T04:10:05Z,1169,1684,1235,2
+sphinx-doc__sphinx-7590,sphinx-doc/sphinx,>4 hours,2020-05-01T18:29:11Z,600,10055,3463,3
+sphinx-doc__sphinx-7748,sphinx-doc/sphinx,15 min - 1 hour,2020-05-30T06:41:07Z,381,5740,1811,1
+sphinx-doc__sphinx-7757,sphinx-doc/sphinx,15 min - 1 hour,2020-05-30T14:46:01Z,652,1738,1060,1
+sphinx-doc__sphinx-7889,sphinx-doc/sphinx,<15 min fix,2020-06-29T16:20:55Z,1166,679,963,1
+sphinx-doc__sphinx-7910,sphinx-doc/sphinx,<15 min fix,2020-07-04T01:08:20Z,1139,861,2586,1
+sphinx-doc__sphinx-7985,sphinx-doc/sphinx,15 min - 1 hour,2020-07-19T10:09:07Z,1776,1472,2588,1
+sphinx-doc__sphinx-8035,sphinx-doc/sphinx,15 min - 1 hour,2020-08-01T16:28:05Z,725,4802,927,1
+sphinx-doc__sphinx-8056,sphinx-doc/sphinx,15 min - 1 hour,2020-08-05T17:18:58Z,1565,1878,1620,1
+sphinx-doc__sphinx-8120,sphinx-doc/sphinx,15 min - 1 hour,2020-08-14T07:23:34Z,1855,1740,1645,2
+sphinx-doc__sphinx-8265,sphinx-doc/sphinx,15 min - 1 hour,2020-10-03T03:06:00Z,1725,1560,538,1
+sphinx-doc__sphinx-8269,sphinx-doc/sphinx,<15 min fix,2020-10-03T11:08:37Z,1187,594,2482,1
+sphinx-doc__sphinx-8459,sphinx-doc/sphinx,<15 min fix,2020-11-20T16:44:10Z,1335,733,1289,1
+sphinx-doc__sphinx-8475,sphinx-doc/sphinx,<15 min fix,2020-11-22T16:54:19Z,766,994,1277,1
+sphinx-doc__sphinx-8548,sphinx-doc/sphinx,1-4 hours,2020-12-17T13:46:32Z,358,3907,2430,2
+sphinx-doc__sphinx-8551,sphinx-doc/sphinx,15 min - 1 hour,2020-12-19T09:34:31Z,1874,1205,2432,2
+sphinx-doc__sphinx-8593,sphinx-doc/sphinx,15 min - 1 hour,2020-12-27T02:41:20Z,638,4830,2331,2
+sphinx-doc__sphinx-8595,sphinx-doc/sphinx,<15 min fix,2020-12-27T03:07:50Z,676,625,1328,1
+sphinx-doc__sphinx-8621,sphinx-doc/sphinx,<15 min fix,2020-12-30T12:13:09Z,2035,501,1118,1
+sphinx-doc__sphinx-8638,sphinx-doc/sphinx,15 min - 1 hour,2021-01-01T13:54:38Z,2924,653,1318,1
+sphinx-doc__sphinx-8721,sphinx-doc/sphinx,<15 min fix,2021-01-21T15:36:24Z,562,573,902,1
+sphinx-doc__sphinx-9229,sphinx-doc/sphinx,1-4 hours,2021-05-15T07:21:49Z,3824,1666,922,1
+sphinx-doc__sphinx-9230,sphinx-doc/sphinx,<15 min fix,2021-05-15T11:33:05Z,1237,533,2518,1
+sphinx-doc__sphinx-9258,sphinx-doc/sphinx,<15 min fix,2021-05-21T16:56:41Z,516,668,2072,1
+sphinx-doc__sphinx-9281,sphinx-doc/sphinx,<15 min fix,2021-05-29T17:16:30Z,809,1248,560,1
+sphinx-doc__sphinx-9320,sphinx-doc/sphinx,<15 min fix,2021-06-11T13:29:04Z,1117,736,838,1
+sphinx-doc__sphinx-9367,sphinx-doc/sphinx,<15 min fix,2021-06-20T17:49:40Z,511,759,641,1
+sphinx-doc__sphinx-9461,sphinx-doc/sphinx,1-4 hours,2021-07-17T06:31:58Z,2294,4777,4844,3
+sphinx-doc__sphinx-9591,sphinx-doc/sphinx,<15 min fix,2021-08-29T15:26:24Z,1977,540,1514,1
+sphinx-doc__sphinx-9602,sphinx-doc/sphinx,15 min - 1 hour,2021-09-01T17:26:58Z,1373,1732,1365,1
+sphinx-doc__sphinx-9658,sphinx-doc/sphinx,15 min - 1 hour,2021-09-20T17:04:23Z,2690,1042,1005,1
+sphinx-doc__sphinx-9673,sphinx-doc/sphinx,15 min - 1 hour,2021-09-25T15:53:46Z,1413,817,1087,1
+sphinx-doc__sphinx-9698,sphinx-doc/sphinx,<15 min fix,2021-10-03T04:04:04Z,817,638,666,1
+sphinx-doc__sphinx-9711,sphinx-doc/sphinx,<15 min fix,2021-10-06T15:08:03Z,1571,1284,1191,1
+sympy__sympy-11618,sympy/sympy,15 min - 1 hour,2016-09-15T20:01:58Z,252,925,430,1
+sympy__sympy-12096,sympy/sympy,<15 min fix,2017-01-25T13:40:24Z,598,505,557,1
+sympy__sympy-12419,sympy/sympy,15 min - 1 hour,2017-03-25T15:02:26Z,1141,1327,1010,1
+sympy__sympy-12481,sympy/sympy,<15 min fix,2017-04-03T01:52:33Z,407,760,1120,1
+sympy__sympy-12489,sympy/sympy,1-4 hours,2017-04-04T08:12:37Z,1214,9648,2074,1
+sympy__sympy-13031,sympy/sympy,15 min - 1 hour,2017-07-23T15:48:13Z,717,1047,703,1
+sympy__sympy-13091,sympy/sympy,15 min - 1 hour,2017-08-05T08:04:32Z,1823,17385,4276,21
+sympy__sympy-13372,sympy/sympy,<15 min fix,2017-09-30T16:05:48Z,1183,736,451,1
+sympy__sympy-13480,sympy/sympy,<15 min fix,2017-10-18T17:27:03Z,430,556,457,1
+sympy__sympy-13551,sympy/sympy,15 min - 1 hour,2017-10-29T20:51:01Z,499,680,601,1
+sympy__sympy-13615,sympy/sympy,15 min - 1 hour,2017-11-17T08:59:51Z,201,871,553,1
+sympy__sympy-13647,sympy/sympy,15 min - 1 hour,2017-11-28T21:22:51Z,1088,495,845,1
+sympy__sympy-13757,sympy/sympy,15 min - 1 hour,2017-12-17T11:08:44Z,421,360,1055,1
+sympy__sympy-13798,sympy/sympy,15 min - 1 hour,2017-12-26T18:12:43Z,861,1343,545,1
+sympy__sympy-13852,sympy/sympy,1-4 hours,2018-01-06T23:54:51Z,1892,2593,1925,1
+sympy__sympy-13877,sympy/sympy,15 min - 1 hour,2018-01-10T01:55:34Z,4361,3483,595,2
+sympy__sympy-13878,sympy/sympy,>4 hours,2018-01-10T07:00:58Z,3106,14547,8763,1
+sympy__sympy-13974,sympy/sympy,15 min - 1 hour,2018-01-20T18:25:59Z,1044,3590,995,1
+sympy__sympy-14248,sympy/sympy,1-4 hours,2018-02-17T10:38:44Z,583,3801,4449,3
+sympy__sympy-14531,sympy/sympy,15 min - 1 hour,2018-03-18T18:15:33Z,668,5583,1753,1
+sympy__sympy-14711,sympy/sympy,<15 min fix,2018-05-12T17:00:20Z,1070,403,400,1
+sympy__sympy-14976,sympy/sympy,15 min - 1 hour,2018-07-25T17:38:07Z,680,585,1587,1
+sympy__sympy-15017,sympy/sympy,<15 min fix,2018-08-03T03:15:04Z,1010,566,1041,1
+sympy__sympy-15345,sympy/sympy,<15 min fix,2018-10-05T06:00:31Z,269,808,785,1
+sympy__sympy-15349,sympy/sympy,15 min - 1 hour,2018-10-06T19:45:27Z,725,441,1978,1
+sympy__sympy-15599,sympy/sympy,15 min - 1 hour,2018-12-06T17:45:49Z,1828,1507,545,1
+sympy__sympy-15809,sympy/sympy,<15 min fix,2019-01-20T06:08:26Z,350,498,826,1
+sympy__sympy-15875,sympy/sympy,<15 min fix,2019-01-29T03:18:51Z,563,396,531,1
+sympy__sympy-15976,sympy/sympy,15 min - 1 hour,2019-02-13T15:02:37Z,1053,2040,8407,1
+sympy__sympy-16450,sympy/sympy,<15 min fix,2019-03-26T18:00:02Z,1610,511,743,1
+sympy__sympy-16597,sympy/sympy,1-4 hours,2019-04-08T12:49:10Z,611,10210,5072,6
+sympy__sympy-16766,sympy/sympy,<15 min fix,2019-05-01T22:02:17Z,599,583,847,1
+sympy__sympy-16792,sympy/sympy,15 min - 1 hour,2019-05-09T03:40:54Z,1930,1793,980,1
+sympy__sympy-16886,sympy/sympy,<15 min fix,2019-05-25T05:55:25Z,185,428,567,1
+sympy__sympy-17139,sympy/sympy,<15 min fix,2019-07-01T19:17:18Z,1916,410,1016,1
+sympy__sympy-17318,sympy/sympy,15 min - 1 hour,2019-08-01T11:55:36Z,2310,1427,1004,2
+sympy__sympy-17630,sympy/sympy,1-4 hours,2019-09-18T22:56:31Z,3430,589,2263,1
+sympy__sympy-17655,sympy/sympy,<15 min fix,2019-09-25T17:04:26Z,1958,505,1187,1
+sympy__sympy-18189,sympy/sympy,<15 min fix,2019-12-31T15:45:24Z,678,621,1027,1
+sympy__sympy-18199,sympy/sympy,1-4 hours,2020-01-01T19:08:59Z,300,2838,2468,1
+sympy__sympy-18211,sympy/sympy,15 min - 1 hour,2020-01-03T06:39:19Z,832,933,1319,1
+sympy__sympy-18698,sympy/sympy,15 min - 1 hour,2020-02-21T05:46:56Z,458,1126,820,1
+sympy__sympy-18763,sympy/sympy,<15 min fix,2020-03-03T03:40:06Z,567,588,575,1
+sympy__sympy-19040,sympy/sympy,15 min - 1 hour,2020-03-31T19:53:54Z,1885,378,799,1
+sympy__sympy-19346,sympy/sympy,15 min - 1 hour,2020-05-17T12:23:33Z,480,741,1163,1
+sympy__sympy-19495,sympy/sympy,<15 min fix,2020-06-05T11:53:09Z,1436,2106,1351,1
+sympy__sympy-19637,sympy/sympy,<15 min fix,2020-06-24T13:08:57Z,221,421,407,1
+sympy__sympy-19783,sympy/sympy,15 min - 1 hour,2020-07-16T09:40:38Z,422,1218,1456,2
+sympy__sympy-19954,sympy/sympy,<15 min fix,2020-08-12T06:07:32Z,921,1523,549,1
+sympy__sympy-20154,sympy/sympy,15 min - 1 hour,2020-09-26T22:49:04Z,552,1559,1936,1
+sympy__sympy-20428,sympy/sympy,15 min - 1 hour,2020-11-14T05:56:31Z,3710,418,1257,1
+sympy__sympy-20438,sympy/sympy,15 min - 1 hour,2020-11-17T08:24:33Z,1269,2873,1164,3
+sympy__sympy-20590,sympy/sympy,15 min - 1 hour,2020-12-12T18:18:38Z,758,611,460,1
+sympy__sympy-20801,sympy/sympy,15 min - 1 hour,2021-01-15T02:01:23Z,509,731,827,1
+sympy__sympy-20916,sympy/sympy,<15 min fix,2021-02-06T05:44:34Z,143,744,1857,1
+sympy__sympy-21379,sympy/sympy,15 min - 1 hour,2021-04-24T19:49:52Z,1781,1007,776,1
+sympy__sympy-21596,sympy/sympy,15 min - 1 hour,2021-06-10T15:35:08Z,568,2659,2120,1
+sympy__sympy-21612,sympy/sympy,15 min - 1 hour,2021-06-14T04:31:24Z,681,541,514,1
+sympy__sympy-21847,sympy/sympy,<15 min fix,2021-08-10T17:41:59Z,1061,1015,1733,1
+sympy__sympy-21930,sympy/sympy,15 min - 1 hour,2021-08-22T20:29:08Z,707,1007,2547,1
+sympy__sympy-22080,sympy/sympy,15 min - 1 hour,2021-09-12T07:11:33Z,645,1617,2056,2
+sympy__sympy-22456,sympy/sympy,15 min - 1 hour,2021-11-10T12:24:42Z,302,1400,372,1
+sympy__sympy-22714,sympy/sympy,<15 min fix,2021-12-19T18:54:36Z,1660,669,716,1
+sympy__sympy-22914,sympy/sympy,15 min - 1 hour,2022-01-25T10:37:44Z,628,277,949,1
+sympy__sympy-23262,sympy/sympy,15 min - 1 hour,2022-03-21T07:17:35Z,1033,649,453,1
+sympy__sympy-23413,sympy/sympy,15 min - 1 hour,2022-04-23T23:40:41Z,353,1296,1074,1
+sympy__sympy-23534,sympy/sympy,<15 min fix,2022-05-22T00:12:33Z,727,365,745,1
+sympy__sympy-23824,sympy/sympy,15 min - 1 hour,2022-07-23T22:13:36Z,2103,632,785,1
+sympy__sympy-23950,sympy/sympy,15 min - 1 hour,2022-08-20T18:21:10Z,766,293,748,1
+sympy__sympy-24066,sympy/sympy,15 min - 1 hour,2022-09-16T22:58:15Z,605,883,1185,1
+sympy__sympy-24213,sympy/sympy,15 min - 1 hour,2022-11-03T14:00:09Z,1023,655,1027,1
+sympy__sympy-24443,sympy/sympy,15 min - 1 hour,2022-12-30T14:43:19Z,687,2511,501,1
+sympy__sympy-24539,sympy/sympy,<15 min fix,2023-01-17T17:26:42Z,659,779,544,1
+sympy__sympy-24562,sympy/sympy,<15 min fix,2023-01-21T12:06:36Z,222,745,532,1
+sympy__sympy-24661,sympy/sympy,15 min - 1 hour,2023-02-05T19:15:22Z,351,1183,1176,1
