@@ -239,7 +239,7 @@ button.choice{padding:12px 16px;font-size:15px}
       <div class="spacer"></div>
       <button class="primary" id="fail2">Fail 1% of nodes</button>
     </div>
-    <div class="legend"><span><i></i>node</span><span><i class="dead"></i>failed node</span><span id="lg-rand"><i class="lost"></i>failed node holding a replica of a lost chunk</span><span id="lg-copy" hidden><i class="copy"></i>a group of three nodes holding the same chunks</span><span id="lg-copy2" hidden><i class="ring"></i>a group whose three nodes all failed: every chunk on it is lost</span></div>
+    <div class="legend"><span><i></i>node</span><span><i class="dead"></i>failed node</span><span><i class="lost"></i>failed node holding a replica of a lost chunk</span><span id="lg-copy" hidden><i class="copy"></i>copyset placement: a group of three nodes that hold the same chunks</span></div>
     <canvas id="c2" width="900" height="560" aria-label="Grid of 5,001 storage nodes, grouped when copysets is selected"></canvas>
     <div class="foot">
       <div class="stat"><div class="l">Chunks lost this outage</div><div class="v lost num" id="s2lost">–</div><div class="sub" id="s2lostsub">&nbsp;</div></div>
@@ -465,7 +465,8 @@ const guess2=document.getElementById('guess2');
 guess2.addEventListener('input',()=>{document.getElementById('guess2v').textContent=guess2.value+'%'; guess2touched=true; document.getElementById('fail2').disabled=false;});
 document.querySelectorAll('#beat2 .seg button').forEach(b=>b.addEventListener('click',()=>{
   mode2=b.dataset.mode; document.querySelectorAll('#beat2 .seg button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
-  document.getElementById('lg-copy').hidden=mode2!=='copy'; document.getElementById('lg-copy2').hidden=mode2!=='copy'; document.getElementById('lg-rand').hidden=mode2==='copy'; g2.setMode(mode2);
+  document.getElementById('lg-copy').hidden=mode2!=='copy'; g2.setMode(mode2);
+  document.getElementById('fail2').textContent='Fail 1% of nodes';
   document.getElementById('guess2wrap').hidden=mode2!=='copy'; document.getElementById('s2gwrap').hidden=mode2!=='copy'; document.getElementById('hint2').hidden=mode2==='copy';
   document.getElementById('fail2').disabled=(mode2==='copy'&&!guess2touched);
   document.getElementById('s2lost').textContent='–'; document.getElementById('s2lostsub').innerHTML='&nbsp;';
@@ -482,7 +483,7 @@ document.getElementById('fail2').addEventListener('click',()=>{
     document.getElementById('s2p').textContent=fmtPct(mode2==='copy'?P_COPY:P_RANDOM);
     document.getElementById('s2p').className='v num '+(mode2==='copy'?'copy':'random');
     if(mode2==='copy'){ document.getElementById('s2guess').textContent=guess2.value+'%'; document.getElementById('r2').hidden=false; }
-    btn.disabled=false;
+    btn.disabled=false; btn.textContent='Fail 1% again';
   }, k=>{ document.getElementById('s2lost').textContent=fmtInt(k); });
 });
 document.getElementById('u2p').textContent=fmtPct(P_COPY);
