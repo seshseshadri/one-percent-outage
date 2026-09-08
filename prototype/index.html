@@ -296,12 +296,12 @@ button.choice{padding:12px 16px;font-size:15px}
     <div class="callout"><strong>Random placement loses a few chunks in almost every outage. Copyset placement loses nothing in almost every outage; when it does lose data, it loses a whole group, about <span class="num">6,000</span> chunks.</strong> Same expected chunks lost per outage. The copyset total approaches its expected value slowly, because its losses come in rare, large outages.</div>
     <div class="choose">
       <h3>Same expected chunks lost per outage. Which cluster would you rather run?</h3>
-      <div class="btns"><button class="choice" id="pick-r">Random placement: a few chunks lost in almost every outage</button><button class="choice" id="pick-c">Copyset placement: no data loss for years, then a whole group</button></div>
+      <div class="btns"><button class="choice" id="pick-r">Random placement: a few chunks lost in almost every outage</button><button class="choice" id="pick-c">Copyset placement: no data loss for several outages, then a whole group</button></div>
     </div>
     <div class="verdict" id="verdict" hidden>
       <div class="callout" id="verdict-text"></div>
-      <div class="callout copy"><strong>The Copysets argument.</strong> When a data-loss incident has a substantial fixed cost that does not scale with bytes lost (a page, an investigation, customer notices, a restore from backup), fewer and larger incidents cost less than frequent small ones. Under that cost model the number to minimise is the chance of any data loss, and copyset placement cuts it about <span class="num">600×</span> with no change in storage or replication.</div>
-      <div class="callout lost"><strong>Where it flips.</strong> If cost is proportional to bytes lost, with no fixed cost per incident, the two placements are equivalent. Expected chunks lost per outage is the right number only under that cost model. Reliability is a distribution, not a single number, and the cost function decides which part of it matters.</div>
+      <div class="callout copy"><strong>The Copysets argument.</strong> When a data-loss incident has a substantial fixed cost that does not scale with bytes lost (a page, an investigation, customer notices, a restore from backup), fewer and larger incidents cost less than frequent small ones. Under that cost model the number to minimise is the chance of any data loss, and copyset placement cuts it with no change in storage or replication (about <span class="num">600×</span> for this cluster and outage size; the ratio depends on both).</div>
+      <div class="callout lost"><strong>The downside of copyset placement.</strong> When data loss does occur, a whole group is lost at once. If recovery time depends on bytes lost, that incident takes much longer to recover from than any single random-placement incident.</div>
     </div>
   </div>
 </section>
@@ -527,7 +527,7 @@ document.getElementById('run1000').addEventListener('click',()=>{
 function pick(which){
   const v=document.getElementById('verdict'), t=document.getElementById('verdict-text');
   t.innerHTML= which==='r' ? '<strong>You chose random placement.</strong> Losses are small and steady, easy to budget for. But almost every outage is a data-loss incident that someone has to handle.'
-                            : '<strong>You chose copyset placement.</strong> Years without data loss, then a large one. The better choice when an incident carries a substantial fixed cost; the worse one when cost scales with bytes lost.';
+                            : '<strong>You chose copyset placement.</strong> Several outages without data loss, then a large one. The better choice when an incident carries a substantial fixed cost; the worse one when cost scales with bytes lost.';
   v.hidden=false; v.scrollIntoView({behavior:reduced?'auto':'smooth',block:'nearest'});
 }
 document.getElementById('pick-r').addEventListener('click',()=>pick('r'));
